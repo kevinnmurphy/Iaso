@@ -1,0 +1,23 @@
+<div style="width: 600px;margin:auto">
+    <img style="width: 600px" src="https://cdn2.iconfinder.com/data/icons/sports-fitness-line-vol-2/52/measure__weight__ruler__tool__Scale__weightloss__weightscale-512.png">
+</div>
+
+<h1 align="center">Welcome to the Biggest Loser App!</h1>
+
+#############
+
+<p>We will put omniauth authentication data here (if present)</p>
+
+<% if name = session[:name] %>
+  <p>Welcome <%= name -%>! We know who you are thanks to Omniauth!</p>
+  <p>You were authenticated by  <%= session[:omniauth_data]['provider'] %></p>
+
+  The raw data returned from Omniauth were:
+  <pre>
+    <%= session[:omniauth_data] %>
+  </pre>
+<% else %>
+  <p>No authentication information is available.</p>
+  <p>Try <%= link_to 'Signing in with the developer strategy', '/auth/developer'%>.</p>
+  <p>Try <%= link_to 'Signing in with the GitHub strategy', '/auth/github'%>.</p>
+<% end %>

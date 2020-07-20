@@ -1,0 +1,13 @@
+  
+<%= form_for @meal do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>
+
+  <%= f.label :calories %>
+  <%= f.number_field :calories, step: 1 %> <br>
+
+  <%= f.label :weight %>
+  <%= f.number_field :weight, in: 1..5, step: 1 %> <br>
+  
+  <%= f.submit %>
+<% end %>

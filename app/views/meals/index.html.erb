@@ -1,0 +1,10 @@
+  
+<ul>
+  <% @logs.each do |log| %>
+    <% if current_user.admin %>
+      <li><%= link_to "Show #{log.name}", log_path(log) %></li>
+    <% else %>
+      <li><%= link_to "Go on #{log.name}", log_path(log) %></li>
+    <% end %>
+  <% end %>
+</ul>
