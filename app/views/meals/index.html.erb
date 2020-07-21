@@ -1,10 +1,11 @@
-  
+ <h1> Meals </h1> 
+ 
 <ul>
-  <% @logs.each do |log| %>
+  <% @meals.each do |meal| %>
     <% if current_user.admin %>
-      <li><%= link_to "Show #{log.name}", log_path(log) %></li>
+      <li><%= link_to "Show #{meal.name}", meal_path(meal) %></li>
     <% else %>
-      <li><%= link_to "Go on #{log.name}", log_path(log) %></li>
+      <li><%= link_to "Go on #{meal.name}", meal_path(meal) %></li>
     <% end %>
   <% end %>
 </ul>

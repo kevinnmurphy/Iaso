@@ -1,36 +1,43 @@
 class MealsController < ApplicationController
 
     before_action :require_login
-    before_action :set_logs!, only: [:show, :edit, :update]
+    before_action :set_meals!, only: [:show, :edit, :update]
 
-    def index
+    def new
+      @meal = Meal.new
+  end
 
-    end
+  def create
+      meal = Meal.create(meal_params)
+      redirect_to meal_path(meal)
+  end
 
-    def show
+  def index
+      @meals = Meal.all
+  end
 
-    end
-  
-    def edit
-        
-    end
-  
-    def update
-      if @post.update(post_params)
-        redirect_to post_path(@post)
-      else
-        render :edit
-      end
-    end
+  def show
+
+      # @food = @meal.foods.build(user_id: current_user.id)
+  end
+
+  def edit
+
+  end
+
+  def update
+      @meal.update(meal_params)
+      redirect_to meal_path(meal)
+  end
 
     
     private
 
-    def logs_params
-        params.require(:logs).permit(:date, :calorie_count)
+    def meal_params
+        params.require(:meals).permit(:category, :calorie_count)
     end
 
-    def set_logs!
-        @post = Post.find(params[:id])
+    def set_meals!
+        @meal = Meal.find(params[:id])
     end
 end

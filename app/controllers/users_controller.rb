@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        @user = User.find_by_id(params[:id])
         if !logged_in?
             redirect_to root_path
         end
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :password, :password_confirmation, :email)
+        params.require(:user).permit(:name, :password, :password_confirmation, :email, :height, :weight)
     end
 
     def require_login

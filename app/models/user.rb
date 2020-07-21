@@ -3,6 +3,7 @@ class User < ApplicationRecord
     # t.string "password_digest"
     # t.integer "height"
     # t.integer "weight"
+    # t.string "email"
 
     has_secure_password
 

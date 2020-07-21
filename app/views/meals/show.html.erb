@@ -1,17 +1,16 @@
   <ul>
-  <li>Name: <%= @meal.name %></li>
-  <li>Tickets: <%= @meal.tickets %></li>
-  <li>Nausea Rating: <%= @meal.nausea_rating %></li>
-  <li>Happiness Rating: <%= @meal.happiness_rating %></li>
-  <li>Minimum Height: <%= @meal.min_height %></li>
+  <li>Category: <%= @meal.category %></li>
+  <li>Calories: <%= @meal.calorie_count %></li>
+  <!-- <li>Foods: <%= @meal.foods.each %></li> -->
+
 </ul>
 
 <% if current_user.admin %>
   <%= link_to 'Edit meal', edit_meal_path(@meal) %>
 <% else %>
-  <%= form_for @ride do |f| %>
+  <%= form_for @food do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :meal_id %>
-    <%= f.submit "Go on this ride" %>
+    <%= f.submit "Eat this meal" %>
   <% end %>
 <% end %>

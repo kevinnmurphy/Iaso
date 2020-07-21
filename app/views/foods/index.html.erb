@@ -2,9 +2,9 @@
 <ul>
   <% @foods.each do |food| %>
     <% if current_user.admin %>
-      <li><%= link_to "Show #{food.name}", food_path(food) %></li>
+      <li><%= link_to "Edit #{food.name}", food_path(food) %></li>
     <% else %>
-      <li><%= link_to "Go on #{food.name}", food_path(food) %></li>
+      <li><%= link_to "Show #{food.name}", food_path(food) %></li>
     <% end %>
   <% end %>
 </ul>

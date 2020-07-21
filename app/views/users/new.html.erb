@@ -1,9 +1,15 @@
-<%= form_for(@user, url: signup_path, method: "post") do |f| %>
-  Username: <%= f.text_field :name %>
+<%= form_for @user do |f| %>
+  <%= f.label :name %> <br>
+  <%= f.text_field :name %> <br>
 
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
+  <%= f.label :password %> <br>
+  <%= f.password_field :password %> <br>
+
+  <%= f.label :password_confirmation %> <br>
+  <%= f.password_field :password_confirmation %> <br>
   
-  Email: <%= f.email_field :password %>
+  <%= f.label :email %> <br>
+  <%= f.email_field :email %><br>
+
   <%= f.submit %>
 <% end %>

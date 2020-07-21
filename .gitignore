@@ -47,3 +47,6 @@ jspm_packages
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .env
+
+# Ignore ToDo list
+.TODO
