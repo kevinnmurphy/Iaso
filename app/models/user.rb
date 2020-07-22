@@ -12,16 +12,17 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    has_many :meals
-    has_many :foodlogs, through: :meals
+    has_many :meals, dependent: :destroy
+    has_many :foodlogs, through: :meals #, dependent: :destroy
     has_many :foods
 
     validates :name, presence: true
     validates :name, uniqueness: true
-    # validates :password, presence: true #=> don't need has_secure_password handles
-    # validates :password, length: 8
-    # validates :email, presence: true
-    
+    # validates :name, email, height, weight, presence: true
+    validates_length_of :password, within: 5..72, if: :password_required?
+
+    # validates :email, presence: true, email: true
+
     # validates :height, presence: true
     # validates :weight, presence: true
 

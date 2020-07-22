@@ -6,4 +6,7 @@ class Foodlog < ApplicationRecord
   belongs_to :food
   belongs_to :meal
 
+  validates :quantity, presence: true
+  validates :quantity, numericality: { only_integer: true  }
+
 end
