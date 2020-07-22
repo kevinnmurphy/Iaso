@@ -1,0 +1,11 @@
+show 
+
+<% if current_user.admin %>
+  <%= link_to 'Edit food', edit_food_path(@food) %>
+<% else %>
+  <%= form_for @ride do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :food_id %>
+    <%= f.submit "Go on this ride" %>
+  <% end %>
+<% end %>

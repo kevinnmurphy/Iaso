@@ -1,17 +1,9 @@
-  <ul>
-  <li>Name: <%= @food.name %></li>
-  <li>Tickets: <%= @food.tickets %></li>
-  <li>Nausea Rating: <%= @food.nausea_rating %></li>
-  <li>Happiness Rating: <%= @food.happiness_rating %></li>
-  <li>Minimum Height: <%= @food.min_height %></li>
+<ul>
+  <li> Name: <%=  @food.name %> </li>
+  <li> Category: <%=  @food.category %> </li>
+  <li> Carbs: <%=  @food.carbs %> </li> 
+  <li> Proteins: <%=  @food.proteins %> </li> 
+  <li> Fats: <%=  @food.fats %> </li> 
+  <li> Calories: <%=  @food.calories %> </li> 
 </ul>
 
-<% if current_user.admin %>
-  <%= link_to 'Edit food', edit_food_path(@food) %>
-<% else %>
-  <%= form_for @ride do |f| %>
-    <%= f.hidden_field :user_id %>
-    <%= f.hidden_field :food_id %>
-    <%= f.submit "Go on this ride" %>
-  <% end %>
-<% end %>

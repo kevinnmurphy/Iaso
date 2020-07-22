@@ -1,8 +1,6 @@
-  <ul>
-  <li>Category: <%= @meal.category %></li>
-  <li>Calories: <%= @meal.calorie_count %></li>
-  <!-- <li>Foods: <%= @meal.foods.each %></li> -->
-
+<ul>
+  <li>Name: <%= @meal.name %></li>
+  <li>Calories: <%=  %></li>
 </ul>
 
 <%= link_to 'Create Meal', new_meal_path(@meal) %>
@@ -10,7 +8,7 @@
 <% if current_user.admin %>
   <%= link_to 'Edit meal', edit_meal_path(@meal) %>
 <% else %>
-  <%= form_for @food do |f| %>
+  <%= form_for @foodlog do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :meal_id %>
     <%= f.submit "Eat this meal" %>
