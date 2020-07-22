@@ -1,16 +1,20 @@
 class Food < ApplicationRecord
-    # t.string "name"
-    # t.integer "calories"
-    # t.decimal "weight"
+    # t.string :name
+    # t.string :category
+    # t.integer :carbs
+    # t.integer :proteins
+    # t.integer :fats
+    # t.integer :calories
 
-    has_many :meals
-    has_many :users, through: :meals
+    belongs_to :user
+    has_many :foodlogs
+    has_many :meals, through: :foodlogs
 
     validates :name, presence: true
     validates :calories, presence: true
-    # calories > 0
-    validates :weight, presence: true
-    # weight > 0
+    # validates :carbs, presence: true
+    # validates :proteins, presence: true
+    # validates :fats, presence: true
 
 
 end

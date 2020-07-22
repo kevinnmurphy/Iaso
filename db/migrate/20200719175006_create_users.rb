@@ -5,8 +5,12 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :password_digest
       t.string :email
 
+      t.integer :photo
+
       t.integer :height
       t.integer :weight
+      t.integer :bodyfat
+      t.integer :calorie_limit
 
       t.boolean :admin, default: false
 

@@ -1,10 +1,8 @@
   <%= form_for @meal do |f| %>
 
-  <%= f.label :category %>
-  <%= f.text_field :category %> <br>
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>
 
-  <%= f.label :calorie_count %>
-  <%= f.number_field :calorie_count, step: 1 %> <br>
-  
+ 
   <%= f.submit %>
 <% end %>

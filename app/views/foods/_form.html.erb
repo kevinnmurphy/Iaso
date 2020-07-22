@@ -1,7 +1,7 @@
   <%= form_for @food do |f| %>
 
   <%= f.label :category %>
-  <%= f.text_field :category, step: 1 %> <br>
+  <%= f.text_field :category %> <br>
 
   <%= f.label :calorie_count %>
   <%= f.number_field :calorie_count, in: 1..5, step: 1 %> <br>

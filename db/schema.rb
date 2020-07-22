@@ -10,47 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_033547) do
+ActiveRecord::Schema.define(version: 2020_07_21_212420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "foods", force: :cascade do |t|
-    t.string "name"
-    t.integer "calorie"
-    t.decimal "weight"
+  create_table "foodlogs", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "foods_id", null: false
+    t.bigint "meals_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["foods_id"], name: "index_foodlogs_on_foods_id"
+    t.index ["meals_id"], name: "index_foodlogs_on_meals_id"
   end
 
-  create_table "logs", force: :cascade do |t|
+  create_table "foods", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.integer "carbs"
+    t.integer "proteins"
+    t.integer "fats"
     t.integer "calories"
-    t.date "date"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
   create_table "meals", force: :cascade do |t|
-    t.integer "calorie_count"
-    t.string "category"
+    t.string "name"
     t.bigint "user_id"
-    t.bigint "food_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["food_id"], name: "index_meals_on_food_id"
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
+    t.string "email"
+    t.integer "photo"
     t.integer "height"
     t.integer "weight"
+    t.integer "bodyfat"
+    t.integer "calorie_limit"
+    t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "email"
   end
 
-  add_foreign_key "meals", "foods"
-  add_foreign_key "meals", "users"
+  add_foreign_key "foodlogs", "foods", column: "foods_id"
+  add_foreign_key "foodlogs", "meals", column: "meals_id"
 end

@@ -1,0 +1,3 @@
+<%= collection_select(:food, :food_ids, Food.all, :id, :food) %>
+<%= options_from_collection_for_select(@food, :id, :name, params[:id]) %>
+  
