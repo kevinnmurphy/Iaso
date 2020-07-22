@@ -12,8 +12,6 @@ Rails.application.routes.draw do
     resources :meals, only: %i[index show]
   end
 
-  
-
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/login', to: 'sessions#new'
@@ -21,5 +19,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   # match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get  '/auth/:provider/callback', to: 'sessions#omniauth'
 
 end
