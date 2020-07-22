@@ -28,6 +28,7 @@
             <% if logged_in? %>
               <li><%= link_to "#{current_user.name.capitalize}'s Profile", user_path(current_user) %></li>
               <li><%= link_to "Meals", user_meals_path(@user) %></li>
+              <li><%= link_to "Foods", foods_path(@user) %></li>
               <li><%= link_to "Log Out", logout_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "Sign Up", signup_path %></li>

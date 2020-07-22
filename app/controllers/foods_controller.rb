@@ -34,6 +34,11 @@ class FoodsController < ApplicationController
         redirect_to food_path(food)
       end
 
+      def destroy
+        Food.find(params[:id]).destroy
+        redirect_to foods_url
+      end
+
     
     private
 
