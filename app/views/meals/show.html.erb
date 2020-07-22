@@ -4,13 +4,5 @@
 </ul>
 
 <%= link_to 'Create Meal', new_meal_path(@meal) %>
+<%= button_to "Delete Meal", meal_path(@meal), method: :delete %>
 
-<% if current_user.admin %>
-  <%= link_to 'Edit meal', edit_meal_path(@meal) %>
-<% else %>
-  <%= form_for @foodlog do |f| %>
-    <%= f.hidden_field :user_id %>
-    <%= f.hidden_field :meal_id %>
-    <%= f.submit "Eat this meal" %>
-  <% end %>
-<% end %>

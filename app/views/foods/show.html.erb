@@ -7,4 +7,5 @@
   <li> Calories: <%=  @food.calories %> </li> 
 </ul>
 
+<%= link_to 'Create Food', new_food_path(@food) %>
 <%= button_to "Delete Food", food_path(@food), method: :delete %>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :foods
   resources :meals
+  resources :foodlogs, only: %i[create update delete]
   resources :users, only: %i[new create show update] do 
     resources :meals, only: %i[index show]
   end

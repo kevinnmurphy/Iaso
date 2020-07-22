@@ -6,3 +6,15 @@
     Foods: <%= @meal.foods.each do |food|%>
     <li><%= food.name %></li>
 </ul>
+
+show
+
+<% if current_user.admin %>
+  <%= link_to 'Edit meal', edit_meal_path(@meal) %>
+<% else %>
+  <%= form_for @foodlog do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :meal_id %>
+    <%= f.submit "Eat this meal" %>
+  <% end %>
+<% end %>
