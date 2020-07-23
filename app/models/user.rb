@@ -26,6 +26,8 @@ class User < ApplicationRecord
     # validates :height, presence: true
     # validates :weight, presence: true
 
+    
+
     def self.from_omniauth(auth)
         User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
             u.name = auth['info']['name']

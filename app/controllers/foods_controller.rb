@@ -1,14 +1,16 @@
 class FoodsController < ApplicationController
 
   before_action :require_login
-  before_action :set_foods!, only: [:show, :edit, :update]
+  before_action :set_foods!, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_owner, only: [:show, :edit, :update]
+  
 
   def new
     @food = Food.new
   end
   
   def create
-    @food = Food.new(food_params)
+    @food = current_user.foods.build(food_params)
     if @food.save
       redirect_to food_path(food)
     else
@@ -49,6 +51,12 @@ class FoodsController < ApplicationController
 
   def set_foods!
     @food = Food.find(params[:id])
+  end
+
+  def redirect_if_not_owner
+    if @food.user != current_user
+      redirect_to user_path(current_user), alert: "You do not have permission to edit this"
+    end
   end
 
 end

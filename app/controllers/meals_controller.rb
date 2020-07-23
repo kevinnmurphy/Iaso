@@ -14,7 +14,7 @@ class MealsController < ApplicationController
 
   def create
     # @food = Food.new(food_params) #finish this nest
-    @meal = Meal.new(meal_params)
+    @meal = current_user.meals.build(meal_params)
     if @meal.save
       redirect_to meal_path(meal)
     else
