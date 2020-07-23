@@ -38683,3 +38683,363 @@ puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.5) lib/puma/server.rb:472:in `process_client'
 puma (4.3.5) lib/puma/server.rb:328:in `block in run'
 puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-07-23 13:47:31 -0400
+  [1m[35m (11.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (Duration: 6.2ms | Allocations: 565)
+Completed 200 OK in 283ms (Views: 268.1ms | ActiveRecord: 0.0ms | Allocations: 8646)
+
+
+Started POST "/auth/google_oauth2" for ::1 at 2020-07-23 13:47:36 -0400
+Started GET "/auth/google_oauth2/callback?state=bd2f3bafa9bb826c6208e2537fae7d36e3bf5e5df2e699fd&code=4%2F2QHtXWRjvny3P9rfdnKQPg2d8qGS2IryjOP9MAe5lBr6mNjhhciaMEya7KnmJtQuPKwXpOgdlj9wIs_G3Lc09iE&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2020-07-23 13:47:57 -0400
+Processing by SessionsController#omniauth as HTML
+  Parameters: {"state"=>"bd2f3bafa9bb826c6208e2537fae7d36e3bf5e5df2e699fd", "code"=>"4/2QHtXWRjvny3P9rfdnKQPg2d8qGS2IryjOP9MAe5lBr6mNjhhciaMEya7KnmJtQuPKwXpOgdlj9wIs_G3Lc09iE", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent", "provider"=>"google_oauth2"}
+  [1m[36mUser Load (13.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["uid", "104405097401751336968"], ["provider", "google_oauth2"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `from_omniauth'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["name", "Kevin M"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `omniauth'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 269ms (ActiveRecord: 192.5ms | Allocations: 15666)
+
+
+Started GET "/users/3" for ::1 at 2020-07-23 13:47:58 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+  [1m[36mUser Load (7.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 129)
+Completed 200 OK in 80ms (Views: 40.4ms | ActiveRecord: 13.2ms | Allocations: 4264)
+
+
+Started GET "/logout" for ::1 at 2020-07-23 13:48:07 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/logout"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (5.1.1) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/3" for ::1 at 2020-07-23 13:55:31 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+  [1m[36mUser Load (42.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 10)
+Completed 200 OK in 269ms (Views: 10.0ms | ActiveRecord: 75.7ms | Allocations: 14805)
+
+
+Started GET "/logout" for ::1 at 2020-07-23 13:55:36 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 270)
+
+
+Started GET "/" for ::1 at 2020-07-23 13:55:36 -0400
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 36)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 2333)
+
+
+Started POST "/auth/google_oauth2" for ::1 at 2020-07-23 13:55:39 -0400
+Started GET "/auth/google_oauth2/callback?state=89158f379eb95d70278f88f0e9f2b2f1205b15eb75a41209&code=4%2F2QFlAn_kg_qQEYtvwGTcJx5bYZzEEeoynjWGt6EiSD-f8SA2y5ZKnmaZUaz4QRXls-pOEQu_eBZt0tUd3uG8xFM&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none" for ::1 at 2020-07-23 13:55:40 -0400
+Processing by SessionsController#omniauth as HTML
+  Parameters: {"state"=>"89158f379eb95d70278f88f0e9f2b2f1205b15eb75a41209", "code"=>"4/2QFlAn_kg_qQEYtvwGTcJx5bYZzEEeoynjWGt6EiSD-f8SA2y5ZKnmaZUaz4QRXls-pOEQu_eBZt0tUd3uG8xFM", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"none", "provider"=>"google_oauth2"}
+  [1m[36mUser Load (13.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["uid", "104405097401751336968"], ["provider", "google_oauth2"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `from_omniauth'
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["name", "Kevin M"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `omniauth'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 25ms (ActiveRecord: 15.5ms | Allocations: 2028)
+
+
+Started GET "/users/3" for ::1 at 2020-07-23 13:55:40 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 1.3ms | Allocations: 3370)
+
+
+Started GET "/users/3" for ::1 at 2020-07-23 14:04:47 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 124)
+Completed 200 OK in 40ms (Views: 22.0ms | ActiveRecord: 1.2ms | Allocations: 4789)
+
+
+Started GET "/logout" for ::1 at 2020-07-23 14:04:49 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 261)
+
+
+Started GET "/" for ::1 at 2020-07-23 14:04:49 -0400
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (Duration: 1.6ms | Allocations: 253)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms | Allocations: 2959)
+
+
+Started GET "/login" for ::1 at 2020-07-23 14:04:51 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/sessions/new.html.erb:2
+  Rendered sessions/new.html.erb within layouts/application (Duration: 48.6ms | Allocations: 4050)
+Completed 200 OK in 112ms (Views: 107.2ms | ActiveRecord: 1.0ms | Allocations: 6800)
+
+
+Started POST "/login" for ::1 at 2020-07-23 14:04:54 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"/iMClUfYheRoyihX0BM/K+91Prxbt230lHli7i4LWmI7EXKnmnoFvPxZVtTwIRJJkY9PgfPAOotBiUo/D5cwBw==", "user"=>{"name"=>"qwer", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "qwer"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:20:in `create'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 345ms (ActiveRecord: 1.5ms | Allocations: 1155)
+
+
+Started GET "/users/1" for ::1 at 2020-07-23 14:04:54 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (7.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+  [1m[36mUser Load (16.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 9)
+Completed 200 OK in 34ms (Views: 6.3ms | ActiveRecord: 23.4ms | Allocations: 3374)
+
+
+Started GET "/logout" for ::1 at 2020-07-23 14:04:57 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 267)
+
+
+Started GET "/" for ::1 at 2020-07-23 14:04:57 -0400
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 2171)
+
+
+Started POST "/auth/google_oauth2" for ::1 at 2020-07-23 14:04:57 -0400
+Started GET "/auth/google_oauth2/callback?state=0cc3071b0b1d2ea026070c4b20b49ffdfbb4406f1f3d1a40&code=4%2F2QFdrDMv53j5efi-TpxF7OOiT3tkGAj9axLlMrzCTBMyvb1J-aBeUNdOn7xhPZO8SSdNcQhZ_gGLlT1lM19hp64&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none" for ::1 at 2020-07-23 14:04:58 -0400
+Processing by SessionsController#omniauth as HTML
+  Parameters: {"state"=>"0cc3071b0b1d2ea026070c4b20b49ffdfbb4406f1f3d1a40", "code"=>"4/2QFdrDMv53j5efi-TpxF7OOiT3tkGAj9axLlMrzCTBMyvb1J-aBeUNdOn7xhPZO8SSdNcQhZ_gGLlT1lM19hp64", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email openid https://www.googleapis.com/auth/userinfo.profile", "authuser"=>"0", "prompt"=>"none", "provider"=>"google_oauth2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["uid", "104405097401751336968"], ["provider", "google_oauth2"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `from_omniauth'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["name", "Kevin M"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `omniauth'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms | Allocations: 1895)
+
+
+Started GET "/users/3" for ::1 at 2020-07-23 14:04:58 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 3355)
+
+
+Started GET "/logout" for ::1 at 2020-07-23 14:05:00 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 271)
+
+
+Started GET "/" for ::1 at 2020-07-23 14:05:00 -0400
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 34)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 2152)
+
+
+Started GET "/signup" for ::1 at 2020-07-23 14:05:04 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1185)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1756)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= render partial: '/shared/errors', locals: {obj :user} %>
+
+<%= form_for @user do |f| %>
+  <%= f.label :name %> <br>
+  <%= f.text_field :name %> <br>
+
+  <%= f.label :password %> <br>
+  <%= f.password_field :password %> <br>
+
+  <%= f.label :password_confirmation %> <br>
+  <%= f.password_field :password_confirmation %> <br>
+  
+  <%= f.label :email %> <br>
+  <%= f.email_field :email %><br>
+
+  <%= f.submit %>
+<% end %>
+):
+1:    <%= render partial: '/shared/errors', locals: {obj :user} %>
+2:    
+3:    <%= form_for @user do |f| %>
+4:      <%= f.label :name %> <br>
+5:      <%= f.text_field :name %> <br>
+6:    
+7:      <%= f.label :password %> <br>
+8:      <%= f.password_field :password %> <br>
+9:    
+10:      <%= f.label :password_confirmation %> <br>
+11:      <%= f.password_field :password_confirmation %> <br>
+12:      
+13:      <%= f.label :email %> <br>
+14:      <%= f.email_field :email %><br>
+15:    
+16:      <%= f.submit %>
+17:    <% end %>
+  
+app/views/users/new.html.erb:1: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/views/users/new.html.erb:19: syntax error, unexpected end, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/views/users/new.html.erb:19: syntax error, unexpected end, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/views/users/new.html.erb:19: syntax error, unexpected end, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/views/users/new.html.erb:19: syntax error, unexpected end, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/views/users/new.html.erb:19: syntax error, unexpected end, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected tSYMBEG, expecting do or '{' or '('
+app/views/users/new.html.erb:19: syntax error, unexpected end, expecting ')'
+Started GET "/" for ::1 at 2020-07-23 14:05:46 -0400
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (Duration: 0.5ms | Allocations: 253)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 3570)
+
+
+Started GET "/signup" for ::1 at 2020-07-23 14:05:47 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2966.5ms | Allocations: 868181)
+Completed 200 OK in 2974ms (Views: 2971.7ms | ActiveRecord: 0.0ms | Allocations: 870902)
+
+
+Started POST "/users" for ::1 at 2020-07-23 14:05:58 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"2Y5VWs58yrHmq+Puokn9IScB+G2IV/VhM9fEK/WJ1zH/5JtP+/srH1gr6IMSJXy+7i0s45OSQwE14F/XQXscjg==", "user"=>{"name"=>"zxcv", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"zxcv@zxcv"}, "commit"=>"Create User"}
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "zxcv"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (10.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "zxcv"], ["password_digest", "$2a$12$LsZtRj733mF1ZkvaLaYGruBOktwKxnDEwB6H5V7lDuJdVSC7PT6qq"], ["email", "zxcv@zxcv"], ["created_at", "2020-07-23 18:05:58.703071"], ["updated_at", "2020-07-23 18:05:58.703071"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 294ms (ActiveRecord: 14.7ms | Allocations: 4306)
+
+
+Started GET "/users/4" for ::1 at 2020-07-23 14:05:58 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 126)
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 0.5ms | Allocations: 3623)
+
+
+Started GET "/logout" for ::1 at 2020-07-23 14:06:03 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 264)
+
+
+Started GET "/" for ::1 at 2020-07-23 14:06:03 -0400
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 35)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2164)
+
+
+Started GET "/login" for ::1 at 2020-07-23 14:06:05 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/sessions/new.html.erb:2
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1276)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.4ms | Allocations: 4000)
+
+
+Started POST "/login" for ::1 at 2020-07-23 14:06:09 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"4DMnh6ZKvrSulSRK4M5Cr6DYiiV23Oc8jnN1LlnBteolAVe1e+g+7DoGWsnA/G/N3iL7GN6rsENbg13/eF3fjw==", "user"=>{"name"=>"qwer", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "qwer"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:20:in `create'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 281ms (ActiveRecord: 0.7ms | Allocations: 985)
+
+
+Started GET "/users/1" for ::1 at 2020-07-23 14:06:10 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.4ms | Allocations: 3368)
+
+
