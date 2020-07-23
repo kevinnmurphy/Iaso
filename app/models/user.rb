@@ -26,16 +26,25 @@ class User < ApplicationRecord
     # validates :height, presence: true
     # validates :weight, presence: true
 
-    def self.create_from_omniauth(auth)
-        byebug
-        user = User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
-            u.username = auth['info']['first_name']
+    def self.from_omniauth(auth)
+        User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
+            u.name = auth['info']['name']
             u.email = auth['info']['email']
             u.password = SecureRandom.hex(16) #=> Set temp password
-
-            u.photo = auth['info']['photo']
         end
     end
+
+    # {"provider"=>"google_oauth2",
+    #     "uid"=>"104405097401751336968",
+    #     "info"=>
+    #      {"name"=>"Kevin M",
+    #       "email"=>"kevinnealmurphy@gmail.com",
+    #       "unverified_email"=>"kevinnealmurphy@gmail.com",
+    #       "email_verified"=>true,
+    #       "first_name"=>"Kevin",
+    #       "last_name"=>"M",
+    #       "image"=>
+    #        "https://lh4.googleusercontent.com/-2XgXgN4XtXI/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuck8WDi83OG_NDFVo7X9EyL02VgdFA/photo.jpg"}
 
 
 end

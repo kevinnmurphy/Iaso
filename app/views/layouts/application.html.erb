@@ -33,7 +33,9 @@
             <% else %>
               <li><%= link_to "Sign Up", signup_path %></li>
               <li><%= link_to "Log In", login_path %></li>
-              <%= button_to "Log in with Google", '/auth/google_oauth2/callback' %>
+              
+              <%= button_to "Log in with Google", '/auth/google_oauth2' %>
+              
             <% end %>
           </ul>
         </div><!--/.nav-collapse -->

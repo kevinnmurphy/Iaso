@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   # match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
-  post  '/auth/:provider/callback', to: 'sessions#omniauth'
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
+ 
 
 end

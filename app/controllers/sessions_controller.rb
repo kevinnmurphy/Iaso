@@ -4,14 +4,12 @@ class SessionsController < ApplicationController
         @user = User.new
     end
 
-    def omniauth #log in with omniauth
+    def omniauth  #login with omniauth
         # byebug
-        user = User.create_from_omniauth(auth)
-
+        user = User.from_omniauth(auth)
         if user.valid?
             session[:user_id] = user.id
-            redirect_to root_path
-            # redirect_to user_path(user)
+            redirect_to user_path(user)
         else
             flash[:message] = user.errors.full_messages.join(", ")
             redirect_to login_path
