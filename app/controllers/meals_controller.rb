@@ -8,16 +8,17 @@ class MealsController < ApplicationController
       @meal = @food.meals.build
     else
       @meal = Meal.new
-      #  @meal.build_food
+      # @meal.foods.create(meal_params)
     end
   end
 
   def create
+    # @food = Food.new(food_params) #finish this nest
     @meal = Meal.new(meal_params)
     if @meal.save
       redirect_to meal_path(meal)
     else
-      # @food = Food.find_by_id(params[:food_id])
+      @food = Food.find_by_id(params[:food_id])
       render :new
     end
   end

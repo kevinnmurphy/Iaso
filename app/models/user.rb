@@ -19,7 +19,7 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :name, uniqueness: true
     # validates :name, email, height, weight, presence: true
-    validates_length_of :password, within: 5..72, if: :password_required?
+    # validates_length_of :password, within: 5..72
 
     # validates :email, presence: true, email: true
 
@@ -27,6 +27,7 @@ class User < ApplicationRecord
     # validates :weight, presence: true
 
     def self.create_from_omniauth(auth)
+        byebug
         user = User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
             u.username = auth['info']['first_name']
             u.email = auth['info']['email']

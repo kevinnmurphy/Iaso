@@ -1,6 +1,13 @@
- <h1> Meals </h1> 
+ <h1> All of the Meals </h1> 
 
  <%= link_to 'Create Meal', new_meal_path(@meal) %>
+
+<ul>
+  <li>link_to Meal 1</li>
+  <li>link_to Meal 2</li>
+
+</ul>
+
 
 <ul>
   <% @meals.each do |meal| %>

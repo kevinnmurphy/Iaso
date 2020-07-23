@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2020_07_22_163716) do
 
   create_table "foodlogs", force: :cascade do |t|
     t.integer "quantity"
-    t.bigint "foods_id", null: false
-    t.bigint "meals_id", null: false
+    t.bigint "food_id", null: false
+    t.bigint "meal_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["foods_id"], name: "index_foodlogs_on_foods_id"
-    t.index ["meals_id"], name: "index_foodlogs_on_meals_id"
+    t.index ["food_id"], name: "index_foodlogs_on_food_id"
+    t.index ["meal_id"], name: "index_foodlogs_on_meal_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -62,6 +62,6 @@ ActiveRecord::Schema.define(version: 2020_07_22_163716) do
     t.string "provider"
   end
 
-  add_foreign_key "foodlogs", "foods", column: "foods_id"
-  add_foreign_key "foodlogs", "meals", column: "meals_id"
+  add_foreign_key "foodlogs", "foods"
+  add_foreign_key "foodlogs", "meals"
 end

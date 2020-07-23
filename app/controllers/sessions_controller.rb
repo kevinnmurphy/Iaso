@@ -5,11 +5,13 @@ class SessionsController < ApplicationController
     end
 
     def omniauth #log in with omniauth
-        user = User.create_from_omniauth
+        # byebug
+        user = User.create_from_omniauth(auth)
 
         if user.valid?
             session[:user_id] = user.id
-            redirect_to user_path(user)
+            redirect_to root_path
+            # redirect_to user_path(user)
         else
             flash[:message] = user.errors.full_messages.join(", ")
             redirect_to login_path
@@ -26,7 +28,7 @@ class SessionsController < ApplicationController
         end
     end
 
-        # def create
+    #     def create
     #     # After entering a name and email value in the /auth/developer
     #     # path and submitting the form, you will see a pretty-print of
     #     # the authentication data object that comes from the "developer"
