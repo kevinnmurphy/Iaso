@@ -42983,3 +42983,36 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 9ms (Views: 4.9ms | ActiveRecord: 0.5ms | Allocations: 3713)
 
 
+Started GET "/" for ::1 at 2020-07-23 22:57:04 -0400
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 35)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.7ms | Allocations: 2935)
+
+
+Started GET "/users/3" for ::1 at 2020-07-23 22:57:13 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 66)
+Completed 200 OK in 9ms (Views: 3.9ms | ActiveRecord: 0.8ms | Allocations: 3426)
+
+
+Started GET "/users/3" for ::1 at 2020-07-23 23:00:41 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 229)
+Completed 200 OK in 13ms (Views: 8.0ms | ActiveRecord: 0.9ms | Allocations: 4780)
+
+

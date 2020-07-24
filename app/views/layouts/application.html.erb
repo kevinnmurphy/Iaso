@@ -26,7 +26,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <% if logged_in? %>
-              <li><%= link_to "#{current_user.name.capitalize}'s Profile", user_path(current_user) %></li>
+              <li><%= link_to "#{current_user.name.titleize}'s Profile", user_path(current_user) %></li>
               <li><%= link_to "Meals", user_meals_path(current_user) %></li>
               <li><%= link_to "Foods", foods_path(current_user) %></li>
               <li><%= link_to "Log Out", logout_path, method: :delete %></li>
