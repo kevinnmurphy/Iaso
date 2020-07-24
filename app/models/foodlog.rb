@@ -9,4 +9,5 @@ class Foodlog < ApplicationRecord
   validates :quantity, presence: true
   validates :quantity, numericality: { only_integer: true  }
 
+  scope :order_by_popular, -> { order() }
 end

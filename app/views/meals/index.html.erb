@@ -3,13 +3,6 @@
  <%= link_to 'Create Meal', new_meal_path(@meal) %>
 
 <ul>
-  <li>link_to Meal 1</li>
-  <li>link_to Meal 2</li>
-
-</ul>
-
-
-<ul>
   <% @meals.each do |meal| %>
     <% if current_user.admin %>
       <li><%= link_to "Edit #{meal.name}", meal_path(meal) %></li>

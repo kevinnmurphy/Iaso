@@ -9,3 +9,6 @@ show
     <%= f.submit "Go on this ride" %>
   <% end %>
 <% end %>
+
+errors
+<%= render partial:'/shared/errors', locals: {obj: @food} %>

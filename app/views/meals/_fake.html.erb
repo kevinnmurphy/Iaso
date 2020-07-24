@@ -26,3 +26,6 @@ nested under meal_id
       
       <%= f.submit %>
     <% end %>
+
+    form errors
+     <%= render partial:'/shared/errors', locals: {obj: @meal} %>

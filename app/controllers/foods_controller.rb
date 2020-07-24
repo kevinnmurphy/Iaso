@@ -2,7 +2,7 @@ class FoodsController < ApplicationController
 
   before_action :require_login
   before_action :set_foods!, only: [:edit, :update, :destroy]
-  before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
+  # before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
   
 
   def new
@@ -52,7 +52,7 @@ class FoodsController < ApplicationController
 
   def set_foods!
     # @food = Food.find(params[:id])
-    @food = current_user.foods.find(params[:id])
+    @food = current_user.foods.find_by_id(params[:id])
   end
 
   def redirect_if_not_owner

@@ -20,5 +20,12 @@ class Food < ApplicationRecord
     # validates :fats, presence: true
     # validates :fats, numericality: { greater_than_or_equal_to: 0}
 
+    scope :order_by_name, -> { order(name: asc) }
+
+    # scope :order_by_property, ->(num) { where('num < ? ', num) }
+    scope :order_by_carbs, -> { order(carbs: asc) }
+    scope :order_by_fats, -> { order(fats: asc) }
+    scope :order_by_proteins, -> { order(proteins: asc) }
+
 
 end

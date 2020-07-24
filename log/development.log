@@ -43016,3 +43016,1860 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 13ms (Views: 8.0ms | ActiveRecord: 0.9ms | Allocations: 4780)
 
 
+Started GET "/users/3" for ::1 at 2020-07-23 23:01:18 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 228)
+Completed 200 OK in 16ms (Views: 7.8ms | ActiveRecord: 3.6ms | Allocations: 4813)
+
+
+Started GET "/users/3/meals" for ::1 at 2020-07-24 08:02:24 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.9ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:13
+  Rendered meals/index.html.erb within layouts/application (Duration: 22.0ms | Allocations: 3914)
+Completed 200 OK in 60ms (Views: 37.9ms | ActiveRecord: 5.6ms | Allocations: 7498)
+
+
+Started GET "/users/3/meals" for ::1 at 2020-07-24 08:03:31 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 961)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.8ms | Allocations: 4954)
+
+
+Started GET "/meals/new" for ::1 at 2020-07-24 08:10:48 -0400
+Processing by MealsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (Duration: 1.1ms | Allocations: 197)
+  Rendered meals/_form.html.erb (Duration: 23.2ms | Allocations: 6147)
+  Rendered meals/new.html.erb within layouts/application (Duration: 24.9ms | Allocations: 6568)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.8ms | Allocations: 8478)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for :name:Symbol):
+     5:   <%= f.label :name %>
+     6:   <%= f.text_field :name %> <br>
+     7: 
+     8:   <%= f.collection_select @food, :name, Food.all, :name, :name %>
+     9: 
+    10: 
+    11: 
+  
+app/views/meals/_form.html.erb:8
+app/views/meals/_form.html.erb:3
+app/views/meals/new.html.erb:2
+Started GET "/meals/1" for ::1 at 2020-07-24 08:11:09 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.6ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:62:in `set_meals!'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (3.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 1]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 11.4ms | Allocations: 2819)
+Completed 200 OK in 52ms (Views: 12.3ms | ActiveRecord: 13.3ms | Allocations: 17583)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 08:11:30 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1080)
+Completed 200 OK in 9ms (Views: 6.1ms | ActiveRecord: 0.6ms | Allocations: 4595)
+
+
+Started GET "/foods/3" for ::1 at 2020-07-24 08:11:32 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 414)
+Completed 200 OK in 9ms (Views: 4.2ms | ActiveRecord: 1.1ms | Allocations: 4045)
+
+
+Started GET "/foods/3/edit" for ::1 at 2020-07-24 08:11:34 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.7ms | Allocations: 2574)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Food with 'id'=3 [WHERE "foods"."user_id" = $1]):
+  
+app/controllers/foods_controller.rb:55:in `set_foods!'
+Started GET "/foods.3" for ::1 at 2020-07-24 08:12:07 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 827)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.6ms | Allocations: 3633)
+
+
+Started GET "/foods/1" for ::1 at 2020-07-24 08:12:10 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 192)
+Completed 200 OK in 8ms (Views: 4.1ms | ActiveRecord: 0.7ms | Allocations: 3564)
+
+
+Started GET "/foods/1/edit" for ::1 at 2020-07-24 08:12:28 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.6ms | Allocations: 2189)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Food with 'id'=1 [WHERE "foods"."user_id" = $1]):
+  
+app/controllers/foods_controller.rb:55:in `set_foods!'
+Started GET "/foods/1" for ::1 at 2020-07-24 08:13:49 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.2ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 396)
+Completed 200 OK in 13ms (Views: 8.2ms | ActiveRecord: 0.7ms | Allocations: 4971)
+
+
+Started GET "/users/3/meals" for ::1 at 2020-07-24 08:13:50 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 961)
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 1.2ms | Allocations: 4341)
+
+
+Started GET "/meals/1" for ::1 at 2020-07-24 08:13:52 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.7ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:62:in `set_meals!'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 1]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1877)
+Completed 200 OK in 13ms (Views: 6.5ms | ActiveRecord: 1.3ms | Allocations: 6248)
+
+
+Started GET "/meals/1" for ::1 at 2020-07-24 08:15:39 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:62:in `set_meals!'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 1]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2722)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.9ms | Allocations: 5941)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"foods", :id=>nil}, missing required keys: [:id]):
+    26: 
+    27: <%= link_to 'Create New Meal', new_meal_path(@meal) %>
+    28: <br>
+    29: <%= link_to 'Edit Food', edit_food_path(@food) %>
+    30: <br>
+    31: <%= button_to "Delete Meal", meal_path(@meal), method: :delete %>
+  
+app/views/meals/show.html.erb:29
+Started GET "/meals/1" for ::1 at 2020-07-24 08:15:55 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.5ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:62:in `set_meals!'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 1]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1926)
+Completed 200 OK in 19ms (Views: 11.8ms | ActiveRecord: 1.1ms | Allocations: 7357)
+
+
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 08:21:15 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.7ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:62:in `set_meals!'
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 1.0ms | Allocations: 51359)
+
+
+  
+NoMethodError (undefined method `redirect_if_not_owner' for #<MealsController:0x00007fd721d99108>
+Did you mean?  redirect_to):
+  
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:428:in `block in make_lambda'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:181:in `block (2 levels) in halting_and_conditional'
+actionpack (6.0.3.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:182:in `block in halting_and_conditional'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:513:in `each'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:134:in `run_callbacks'
+actionpack (6.0.3.2) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.2) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.2) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.2) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.2) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+omniauth (1.9.1) lib/omniauth/strategy.rb:192:in `call!'
+omniauth (1.9.1) lib/omniauth/strategy.rb:169:in `call'
+omniauth (1.9.1) lib/omniauth/builder.rb:45:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (5.1.1) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/3/meals" for ::1 at 2020-07-24 09:00:23 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.6ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 13.4ms | Allocations: 3945)
+Completed 200 OK in 69ms (Views: 17.7ms | ActiveRecord: 1.4ms | Allocations: 19735)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 09:00:24 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.6ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 18.3ms | Allocations: 7176)
+Completed 200 OK in 31ms (Views: 23.1ms | ActiveRecord: 0.9ms | Allocations: 12118)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 10:39:14 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.7ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 15.5ms | Allocations: 6948)
+Completed 200 OK in 218ms (Views: 21.2ms | ActiveRecord: 1.5ms | Allocations: 22800)
+
+
+Started GET "/users/3/meals" for ::1 at 2020-07-24 10:39:16 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.7ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 3720)
+Completed 200 OK in 17ms (Views: 10.0ms | ActiveRecord: 1.0ms | Allocations: 8271)
+
+
+Started GET "/meals/1" for ::1 at 2020-07-24 10:39:18 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (1.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 1]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1904)
+Completed 200 OK in 21ms (Views: 7.6ms | ActiveRecord: 1.9ms | Allocations: 8651)
+
+
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:39:21 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.3ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.2ms | Allocations: 6920)
+
+
+  
+NameError (uninitialized constant MealsController::Foods):
+  
+app/controllers/meals_controller.rb:41:in `edit'
+Started GET "/meals/1" for ::1 at 2020-07-24 10:39:40 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mCACHE Meal Load (0.1ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 1]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1915)
+Completed 200 OK in 69ms (Views: 6.7ms | ActiveRecord: 14.7ms | Allocations: 33177)
+
+
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:39:44 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.6ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.5ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (1.2ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (Duration: 2.7ms | Allocations: 1703)
+  Rendered meals/_form.html.erb (Duration: 4.6ms | Allocations: 2113)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 7.7ms | Allocations: 2419)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 2.5ms | Allocations: 7610)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    1: <% if obj.errors.any? %>
+    2:   <div id="error_explanation">
+    3:     <h2><%= pluralize(obj.errors.count, "error") %> prohibited this from being saved:</h2>
+    4:  
+  
+app/views/shared/_errors.html.erb:1
+app/views/meals/_form.html.erb:1
+app/views/meals/edit.html.erb:2
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:49:01 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.9ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 0.9ms | Allocations: 1221)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1525)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 2.4ms | Allocations: 6096)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1:  
+    2: 
+    3:   <%= form_for @meal do |f| %>
+    4: 
+    5:   <%= f.label :name %>
+    6:   <%= f.text_field :name %> <br>
+  
+app/views/meals/_form.html.erb:3
+app/views/meals/edit.html.erb:2
+Started GET "/meals/1" for ::1 at 2020-07-24 10:49:19 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.6ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.5ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 1]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1927)
+Completed 200 OK in 17ms (Views: 10.0ms | ActiveRecord: 1.5ms | Allocations: 6752)
+
+
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:49:22 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.6ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 0.6ms | Allocations: 1042)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1109)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.4ms | Allocations: 4810)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1:  
+    2: 
+    3:   <%= form_for @meal do |f| %>
+    4: 
+    5:   <%= f.label :name %>
+    6:   <%= f.text_field :name %> <br>
+  
+app/views/meals/_form.html.erb:3
+app/views/meals/edit.html.erb:2
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:49:40 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.3ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 0.4ms | Allocations: 972)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1039)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 11.0ms | Allocations: 25199)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1:  
+    2: 
+    3:   <%= form_for @meal do |f| %>
+    4: 
+    5:   <%= f.label :name %>
+    6:   <%= f.text_field :name %> <br>
+  
+app/views/meals/_form.html.erb:3
+app/views/meals/edit.html.erb:2
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:50:00 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (14.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND (1) LIMIT $2[0m  [["user_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 20.1ms | Allocations: 19670)
+
+
+  
+ActiveRecord::StatementInvalid (PG::DatatypeMismatch: ERROR:  argument of AND must be type boolean, not type integer
+LINE 1: ....* FROM "meals" WHERE "meals"."user_id" = $1 AND (1) LIMIT $...
+                                                             ^
+):
+  
+app/controllers/meals_controller.rb:38:in `edit'
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:50:17 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.4ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 0.4ms | Allocations: 972)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1039)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 8.2ms | Allocations: 24921)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1:  
+    2: 
+    3:   <%= form_for @meal do |f| %>
+    4: 
+    5:   <%= f.label :name %>
+    6:   <%= f.text_field :name %> <br>
+  
+app/views/meals/_form.html.erb:3
+app/views/meals/edit.html.erb:2
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:50:29 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+Completed 404 Not Found in 37ms (ActiveRecord: 7.3ms | Allocations: 19332)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Meal with 'id'=1 [WHERE "meals"."user_id" = $1]):
+  
+app/controllers/meals_controller.rb:38:in `edit'
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:51:00 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.4ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 0.4ms | Allocations: 972)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1039)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 14.5ms | Allocations: 25120)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1:  
+    2: 
+    3:   <%= form_for @meal do |f| %>
+    4: 
+    5:   <%= f.label :name %>
+    6:   <%= f.text_field :name %> <br>
+  
+app/views/meals/_form.html.erb:3
+app/views/meals/edit.html.erb:2
+Started GET "/meals/1/edit" for ::1 at 2020-07-24 10:51:58 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.4ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 0.8ms | Allocations: 1136)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1445)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 7.6ms | Allocations: 26254)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1:  
+    2: 
+    3:   <%= form_for @meal do |f| %>
+    4: 
+    5:   <%= f.label :name %>
+    6:   <%= f.text_field :name %> <br>
+  
+app/views/meals/_form.html.erb:3
+app/views/meals/edit.html.erb:2
+Started GET "/users/3/meals" for ::1 at 2020-07-24 10:52:10 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 965)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.5ms | Allocations: 4361)
+
+
+Started GET "/meals/new" for ::1 at 2020-07-24 10:52:13 -0400
+Processing by MealsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/new.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 1.5ms | Allocations: 589)
+  Rendered meals/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 863)
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 0.2ms | Allocations: 3826)
+
+
+Started POST "/meals" for ::1 at 2020-07-24 10:52:17 -0400
+Processing by MealsController#create as HTML
+  Parameters: {"authenticity_token"=>"l+X3Lpf7gzKuCyKItN/3yopoO0a2/3cbcWqE4sNLEcVgUQlexLQYr5CtpzaaftSMx229rnHM5gGBnZjLyUJZSg==", "meal"=>{"name"=>"Meal02"}, "commit"=>"Create Meal"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/meals_controller.rb:20:in `create'
+  [1m[36mMeal Create (4.3ms)[0m  [1m[32mINSERT INTO "meals" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Meal02"], ["user_id", 3], ["created_at", "2020-07-24 14:52:17.685840"], ["updated_at", "2020-07-24 14:52:17.685840"]]
+  ↳ app/controllers/meals_controller.rb:20:in `create'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/meals_controller.rb:20:in `create'
+Redirected to http://localhost:3000/meals/5
+Completed 302 Found in 19ms (ActiveRecord: 7.4ms | Allocations: 4533)
+
+
+Started GET "/meals/5" for ::1 at 2020-07-24 10:52:17 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2270)
+Completed 200 OK in 27ms (Views: 6.9ms | ActiveRecord: 4.2ms | Allocations: 14589)
+
+
+Started GET "/meals/5/edit" for ::1 at 2020-07-24 10:52:23 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.5ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 1.3ms | Allocations: 564)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 628)
+Completed 200 OK in 15ms (Views: 4.6ms | ActiveRecord: 1.4ms | Allocations: 6093)
+
+
+Started PATCH "/meals/5" for ::1 at 2020-07-24 10:52:25 -0400
+Processing by MealsController#update as HTML
+  Parameters: {"authenticity_token"=>"IhXe5W0tM2NcM3Yt0IVDSk+BlOXC6ckPODyB+kQyVZvrwG4ZZWYFneq6KW6/WKlF6Ep6z6STXQQbzcB0SQd2rQ==", "meal"=>{"name"=>"Meal02"}, "commit"=>"Update Meal", "id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:45:in `update'
+Redirected to http://localhost:3000/meals/5
+Completed 302 Found in 8ms (ActiveRecord: 0.8ms | Allocations: 2728)
+
+
+Started GET "/meals/5" for ::1 at 2020-07-24 10:52:25 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (1.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.7ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1553)
+Completed 200 OK in 13ms (Views: 6.1ms | ActiveRecord: 1.9ms | Allocations: 5784)
+
+
+Started GET "/meals/5" for ::1 at 2020-07-24 10:53:32 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 6.5ms | Allocations: 20162)
+
+
+  
+NoMethodError (undefined method `meal' for #<User:0x00007fd71bc1dbb8>
+Did you mean?  meals):
+  
+app/controllers/meals_controller.rb:33:in `show'
+Started GET "/meals/5" for ::1 at 2020-07-24 10:53:42 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1915)
+Completed 200 OK in 64ms (Views: 7.0ms | ActiveRecord: 10.9ms | Allocations: 34621)
+
+
+Started GET "/users/3/meals" for ::1 at 2020-07-24 10:53:45 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 773)
+Completed 200 OK in 9ms (Views: 5.8ms | ActiveRecord: 0.6ms | Allocations: 3575)
+
+
+Started GET "/meals/1" for ::1 at 2020-07-24 10:53:47 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.7ms | Allocations: 3097)
+
+
+  
+NoMethodError (undefined method `foods' for nil:NilClass):
+  
+app/controllers/meals_controller.rb:34:in `show'
+Started GET "/meals/5" for ::1 at 2020-07-24 10:53:53 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1553)
+Completed 200 OK in 15ms (Views: 6.1ms | ActiveRecord: 1.3ms | Allocations: 6259)
+
+
+Started GET "/meals/5/edit" for ::1 at 2020-07-24 10:53:59 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.2ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 1.2ms | Allocations: 603)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 667)
+Completed 200 OK in 16ms (Views: 4.6ms | ActiveRecord: 1.6ms | Allocations: 7022)
+
+
+Started PATCH "/meals/5" for ::1 at 2020-07-24 10:54:02 -0400
+Processing by MealsController#update as HTML
+  Parameters: {"authenticity_token"=>"9EaQj6ztNZY9drqpvN+oAziKJq8zrYsncF4JbmxCVCo9kyBzpKYDaIv/5erTAkIMn0HIhVXXHyxTr0jgYXd3HA==", "meal"=>{"name"=>"Meal02"}, "commit"=>"Update Meal", "id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:45:in `update'
+Redirected to http://localhost:3000/meals/5
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms | Allocations: 2828)
+
+
+Started GET "/meals/5" for ::1 at 2020-07-24 10:54:02 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.8ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1553)
+Completed 200 OK in 16ms (Views: 8.8ms | ActiveRecord: 2.0ms | Allocations: 6272)
+
+
+Started GET "/meals/5" for ::1 at 2020-07-24 10:54:16 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1915)
+Completed 200 OK in 75ms (Views: 10.1ms | ActiveRecord: 11.0ms | Allocations: 34573)
+
+
+Started GET "/meals/5/edit" for ::1 at 2020-07-24 10:54:17 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.2ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 1.4ms | Allocations: 603)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 667)
+Completed 200 OK in 15ms (Views: 4.4ms | ActiveRecord: 1.0ms | Allocations: 7029)
+
+
+Started GET "/meals/5/edit" for ::1 at 2020-07-24 11:38:16 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.6ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 4.0ms | Allocations: 615)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 4.8ms | Allocations: 679)
+Completed 200 OK in 89ms (Views: 12.3ms | ActiveRecord: 14.8ms | Allocations: 26464)
+
+
+Started PATCH "/meals/5" for ::1 at 2020-07-24 11:38:18 -0400
+Processing by MealsController#update as HTML
+  Parameters: {"authenticity_token"=>"dywJRteanxBt4bJGFHecH5ughQvrx5U52W3/zwnRuzS++bm639Gp7tto7QV7qnYQPGtrIY29ATL6nL5BBOSYAg==", "meal"=>{"name"=>"Meal02"}, "commit"=>"Update Meal", "id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (3.1ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (1.6ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:45:in `update'
+Redirected to http://localhost:3000/meals/5
+Completed 302 Found in 15ms (ActiveRecord: 5.2ms | Allocations: 2839)
+
+
+Started GET "/meals/5" for ::1 at 2020-07-24 11:38:18 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (1.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.6ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (1.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 7.4ms | Allocations: 1905)
+Completed 200 OK in 34ms (Views: 9.1ms | ActiveRecord: 3.7ms | Allocations: 14225)
+
+
+Started GET "/meals/5/edit" for ::1 at 2020-07-24 11:38:22 -0400
+Processing by MealsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.5ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:38:in `edit'
+  [1m[36mFoodlog Load (0.5ms)[0m  [1m[34mSELECT "foodlogs".* FROM "foodlogs" INNER JOIN "meals" ON "foodlogs"."meal_id" = "meals"."id" WHERE "meals"."user_id" = $1 AND "foodlogs"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:40:in `edit'
+  Rendering meals/edit.html.erb within layouts/application
+  Rendered meals/_form.html.erb (Duration: 1.2ms | Allocations: 553)
+  Rendered meals/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 617)
+Completed 200 OK in 15ms (Views: 4.4ms | ActiveRecord: 1.6ms | Allocations: 6082)
+
+
+Started PATCH "/meals/5" for ::1 at 2020-07-24 11:38:29 -0400
+Processing by MealsController#update as HTML
+  Parameters: {"authenticity_token"=>"0geaWZPvVMVjJ31P9Qd/M5kxtdWJ8SglUu8ZV2jxqk0b0iqlm6RiO9WuIgya2pU8Pvpb/++LvC5xHljZZcSJew==", "meal"=>{"name"=>"Meal 05"}, "commit"=>"Update Meal", "id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:45:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/meals_controller.rb:46:in `update'
+  [1m[36mMeal Update (5.6ms)[0m  [1m[33mUPDATE "meals" SET "name" = $1, "updated_at" = $2 WHERE "meals"."id" = $3[0m  [["name", "Meal 05"], ["updated_at", "2020-07-24 15:38:29.144469"], ["id", 5]]
+  ↳ app/controllers/meals_controller.rb:46:in `update'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/meals_controller.rb:46:in `update'
+Redirected to http://localhost:3000/meals/5
+Completed 302 Found in 19ms (ActiveRecord: 8.4ms | Allocations: 4932)
+
+
+Started GET "/meals/5" for ::1 at 2020-07-24 11:38:29 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  Rendered meals/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1553)
+Completed 200 OK in 13ms (Views: 6.4ms | ActiveRecord: 1.5ms | Allocations: 6271)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 11:38:53 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1080)
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.6ms | Allocations: 4590)
+
+
+Started GET "/foods/4" for ::1 at 2020-07-24 11:38:55 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 392)
+Completed 200 OK in 12ms (Views: 5.2ms | ActiveRecord: 1.2ms | Allocations: 4023)
+
+
+Started GET "/foods/4/edit" for ::1 at 2020-07-24 11:38:59 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.7ms | Allocations: 2553)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Food with 'id'=4 [WHERE "foods"."user_id" = $1]):
+  
+app/controllers/foods_controller.rb:55:in `set_foods!'
+Started GET "/foods/4/edit" for ::1 at 2020-07-24 11:39:50 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 9.0ms | Allocations: 14874)
+
+
+  
+NoMethodError (undefined method `foods_by_id' for #<User:0x00007fd72440a9b8>
+Did you mean?  food_ids):
+  
+app/controllers/foods_controller.rb:55:in `set_foods!'
+Started GET "/foods/4/edit" for ::1 at 2020-07-24 11:40:06 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 7.1ms | Allocations: 16599)
+
+
+  
+NoMethodError (undefined method `user' for nil:NilClass
+Did you mean?  super):
+  
+app/controllers/foods_controller.rb:59:in `redirect_if_not_owner'
+Started GET "/foods/4/edit" for ::1 at 2020-07-24 11:40:20 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+  [1m[36mCACHE Food Load (0.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:31:in `edit'
+  Rendering foods/edit.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (Duration: 1.8ms | Allocations: 1706)
+  Rendered foods/_form.html.erb (Duration: 3.3ms | Allocations: 2250)
+  Rendered foods/edit.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2549)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 5.5ms | Allocations: 19636)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    1: <% if obj.errors.any? %>
+    2:   <div id="error_explanation">
+    3:     <h2><%= pluralize(obj.errors.count, "error") %> prohibited this from being saved:</h2>
+    4:  
+  
+app/views/shared/_errors.html.erb:1
+app/views/foods/_form.html.erb:1
+app/views/foods/edit.html.erb:2
+Started GET "/foods/4/edit" for ::1 at 2020-07-24 11:40:45 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+  [1m[36mCACHE Food Load (0.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:31:in `edit'
+  Rendering foods/edit.html.erb within layouts/application
+  Rendered foods/_form.html.erb (Duration: 1.0ms | Allocations: 1359)
+  Rendered foods/edit.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1663)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.7ms | Allocations: 5186)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: 
+    2: 
+    3: <%= form_for @food do |f| %>
+    4: 
+    5:   <%= f.label :name %>
+    6:   <%= f.text_field :name %> <br>
+  
+app/views/foods/_form.html.erb:3
+app/views/foods/edit.html.erb:2
+Started GET "/foods.3" for ::1 at 2020-07-24 11:41:01 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (34.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.5ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 33.8ms | Allocations: 7045)
+Completed 200 OK in 77ms (Views: 35.6ms | ActiveRecord: 38.0ms | Allocations: 10490)
+
+
+Started GET "/foods/new" for ::1 at 2020-07-24 11:41:05 -0400
+Processing by FoodsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/new.html.erb within layouts/application
+  Rendered foods/_form.html.erb (Duration: 13.3ms | Allocations: 4282)
+  Rendered foods/new.html.erb within layouts/application (Duration: 14.6ms | Allocations: 4559)
+Completed 200 OK in 20ms (Views: 17.7ms | ActiveRecord: 0.2ms | Allocations: 7517)
+
+
+Started POST "/foods" for ::1 at 2020-07-24 11:41:12 -0400
+Processing by FoodsController#create as HTML
+  Parameters: {"authenticity_token"=>"RBsNVg8ndC0zTsOhUB1JtemZ50bAd3vFQbc/F908a92fZxVb6vAYDAk2xRJS6o3oeu3Be0PEPqbEHXHZCDI0qQ==", "food"=>{"name"=>"Nana", "category"=>"asdf", "carbs"=>"1", "fats"=>"1", "proteins"=>"1", "calories"=>"1"}, "commit"=>"Create Food"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/foods_controller.rb:14:in `create'
+  [1m[36mFood Create (0.9ms)[0m  [1m[32mINSERT INTO "foods" ("name", "category", "carbs", "proteins", "fats", "calories", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "Nana"], ["category", "asdf"], ["carbs", 1], ["proteins", 1], ["fats", 1], ["calories", 1], ["user_id", 3], ["created_at", "2020-07-24 15:41:12.960563"], ["updated_at", "2020-07-24 15:41:12.960563"]]
+  ↳ app/controllers/foods_controller.rb:14:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/foods_controller.rb:14:in `create'
+Redirected to http://localhost:3000/foods/6
+Completed 302 Found in 12ms (ActiveRecord: 2.0ms | Allocations: 4298)
+
+
+Started GET "/foods/6" for ::1 at 2020-07-24 11:41:12 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 397)
+Completed 200 OK in 8ms (Views: 4.4ms | ActiveRecord: 0.5ms | Allocations: 4024)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 11:41:21 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.7ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 871)
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 0.9ms | Allocations: 3675)
+
+
+Started GET "/foods/6" for ::1 at 2020-07-24 11:41:34 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (1.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 192)
+Completed 200 OK in 10ms (Views: 5.0ms | ActiveRecord: 1.5ms | Allocations: 3562)
+
+
+Started GET "/foods/6/edit" for ::1 at 2020-07-24 11:41:36 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+  [1m[36mCACHE Food Load (0.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:31:in `edit'
+  Rendering foods/edit.html.erb within layouts/application
+  Rendered foods/_form.html.erb (Duration: 3.4ms | Allocations: 1648)
+  Rendered foods/edit.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1712)
+Completed 200 OK in 13ms (Views: 6.5ms | ActiveRecord: 0.7ms | Allocations: 6273)
+
+
+Started PATCH "/foods/6" for ::1 at 2020-07-24 11:41:39 -0400
+Processing by FoodsController#update as HTML
+  Parameters: {"authenticity_token"=>"mqOM6cofMKjnOIjl0Zhp9wl7Q4xGPxdPvnEtXXWktdhqAObRfojXje6RXQK7XXC4wsz56oq2q4lfDDzyhA7nmg==", "food"=>{"name"=>"Nana", "category"=>"asdf", "carbs"=>"2", "fats"=>"1", "proteins"=>"1", "calories"=>"1"}, "commit"=>"Update Food", "id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (1.1ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+  [1m[36mCACHE Food Load (0.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:35:in `update'
+  [1m[35m (3.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/foods_controller.rb:36:in `update'
+  [1m[36mFood Update (4.1ms)[0m  [1m[33mUPDATE "foods" SET "carbs" = $1, "updated_at" = $2 WHERE "foods"."id" = $3[0m  [["carbs", 2], ["updated_at", "2020-07-24 15:41:39.955341"], ["id", 6]]
+  ↳ app/controllers/foods_controller.rb:36:in `update'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/foods_controller.rb:36:in `update'
+Redirected to http://localhost:3000/foods/6
+Completed 302 Found in 26ms (ActiveRecord: 9.3ms | Allocations: 5250)
+
+
+Started GET "/foods/6" for ::1 at 2020-07-24 11:41:39 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 192)
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 0.4ms | Allocations: 3564)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 11:41:47 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 870)
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 0.7ms | Allocations: 3670)
+
+
+Started GET "/foods/1" for ::1 at 2020-07-24 11:41:49 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 192)
+Completed 200 OK in 8ms (Views: 3.8ms | ActiveRecord: 0.6ms | Allocations: 3559)
+
+
+Started GET "/foods/1/edit" for ::1 at 2020-07-24 11:41:50 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.2ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+  [1m[36mCACHE Food Load (0.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:31:in `edit'
+  Rendering foods/edit.html.erb within layouts/application
+  Rendered foods/_form.html.erb (Duration: 0.5ms | Allocations: 1042)
+  Rendered foods/edit.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1109)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.5ms | Allocations: 3888)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: 
+    2: 
+    3: <%= form_for @food do |f| %>
+    4: 
+    5:   <%= f.label :name %>
+    6:   <%= f.text_field :name %> <br>
+  
+app/views/foods/_form.html.erb:3
+app/views/foods/edit.html.erb:2
+Started GET "/foods/1" for ::1 at 2020-07-24 11:48:18 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.5ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 438)
+Completed 200 OK in 17ms (Views: 11.2ms | ActiveRecord: 1.2ms | Allocations: 5121)
+
+
+Started GET "/foods/1" for ::1 at 2020-07-24 11:48:21 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.2ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 205)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.5ms | Allocations: 3579)
+
+
+Started GET "/foods/1" for ::1 at 2020-07-24 11:48:23 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.5ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 203)
+Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 0.9ms | Allocations: 3575)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 11:48:26 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.5ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1109)
+Completed 200 OK in 11ms (Views: 6.9ms | ActiveRecord: 0.9ms | Allocations: 4096)
+
+
+Started GET "/foods/3" for ::1 at 2020-07-24 11:48:30 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 205)
+Completed 200 OK in 10ms (Views: 5.2ms | ActiveRecord: 0.7ms | Allocations: 3573)
+
+
+Started GET "/foods/6" for ::1 at 2020-07-24 11:48:34 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (27.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (22.8ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 203)
+Completed 200 OK in 61ms (Views: 5.5ms | ActiveRecord: 50.0ms | Allocations: 3575)
+
+
+Started GET "/foods/4" for ::1 at 2020-07-24 11:48:36 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 193)
+Completed 200 OK in 9ms (Views: 4.9ms | ActiveRecord: 1.3ms | Allocations: 3563)
+
+
+Started GET "/foods/1" for ::1 at 2020-07-24 11:48:38 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.7ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  Rendered foods/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 203)
+Completed 200 OK in 9ms (Views: 4.9ms | ActiveRecord: 0.9ms | Allocations: 3570)
+
+
+Started GET "/foods/1" for ::1 at 2020-07-24 11:52:10 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.2ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  [1m[36mFood Load (0.2ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 LIMIT $2[0m  [["user_id", 3], ["LIMIT", 11]]
+  Rendered foods/show.html.erb within layouts/application (Duration: 7.6ms | Allocations: 4288)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.7ms | Allocations: 6643)
+
+
+  
+ActionView::Template::Error (undefined method `contain?' for #<Food::ActiveRecord_Associations_CollectionProxy:0x00007fd721bb1ef8>):
+     7:   <li> Calories: <%=  @food.calories %> </li> 
+     8: </ul>
+     9: 
+    10: <% if  current_user.foods.contain?(@food) %>
+    11:   <%= link_to 'Edit Food', edit_food_path(@food) %>
+    12:   
+    13: <% end %>
+  
+app/views/foods/show.html.erb:10
+Started GET "/foods/1" for ::1 at 2020-07-24 11:52:30 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.7ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  [1m[36mFood Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/views/foods/show.html.erb:10
+  Rendered foods/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1120)
+Completed 200 OK in 34ms (Views: 10.0ms | ActiveRecord: 1.3ms | Allocations: 5700)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 11:52:34 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.5ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1107)
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 0.9ms | Allocations: 4096)
+
+
+Started GET "/foods/4" for ::1 at 2020-07-24 11:52:36 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  [1m[36mFood Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/foods/show.html.erb:10
+  Rendered foods/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 863)
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 1.0ms | Allocations: 4246)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 11:52:37 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 870)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 0.6ms | Allocations: 3676)
+
+
+Started GET "/foods/6" for ::1 at 2020-07-24 11:52:38 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  [1m[36mFood Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/views/foods/show.html.erb:10
+  Rendered foods/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 913)
+Completed 200 OK in 11ms (Views: 6.1ms | ActiveRecord: 0.9ms | Allocations: 4285)
+
+
+Started GET "/foods/6/edit" for ::1 at 2020-07-24 11:52:41 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.5ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+  [1m[36mCACHE Food Load (0.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:31:in `edit'
+  Rendering foods/edit.html.erb within layouts/application
+  Rendered foods/_form.html.erb (Duration: 3.1ms | Allocations: 1961)
+  Rendered foods/edit.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2408)
+Completed 200 OK in 18ms (Views: 7.9ms | ActiveRecord: 0.8ms | Allocations: 7118)
+
+
+Started PATCH "/foods/6" for ::1 at 2020-07-24 11:52:44 -0400
+Processing by FoodsController#update as HTML
+  Parameters: {"authenticity_token"=>"ezJ5wV2aJCu3G5Xc0Wyi16KwzIVoWjStvh1PuPG04lOLkRP56Q3DDr6yQDu7qbuYaQd246TTiGtfYF4XAB6wEQ==", "food"=>{"name"=>"Nana", "category"=>"asdf", "carbs"=>"2", "fats"=>"1", "proteins"=>"1", "calories"=>"2"}, "commit"=>"Update Food", "id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+  [1m[36mCACHE Food Load (0.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:35:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/foods_controller.rb:36:in `update'
+  [1m[36mFood Update (0.6ms)[0m  [1m[33mUPDATE "foods" SET "calories" = $1, "updated_at" = $2 WHERE "foods"."id" = $3[0m  [["calories", 2], ["updated_at", "2020-07-24 15:52:44.212302"], ["id", 6]]
+  ↳ app/controllers/foods_controller.rb:36:in `update'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/foods_controller.rb:36:in `update'
+Redirected to http://localhost:3000/foods/6
+Completed 302 Found in 15ms (ActiveRecord: 3.3ms | Allocations: 5217)
+
+
+Started GET "/foods/6" for ::1 at 2020-07-24 11:52:44 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.2ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  [1m[36mFood Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/views/foods/show.html.erb:10
+  Rendered foods/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 913)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 0.8ms | Allocations: 4284)
+
+
+Started GET "/foods/6/edit" for ::1 at 2020-07-24 11:52:47 -0400
+Processing by FoodsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+  [1m[36mCACHE Food Load (0.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:31:in `edit'
+  Rendering foods/edit.html.erb within layouts/application
+  Rendered foods/_form.html.erb (Duration: 2.3ms | Allocations: 1635)
+  Rendered foods/edit.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1833)
+Completed 200 OK in 12ms (Views: 6.2ms | ActiveRecord: 0.7ms | Allocations: 6399)
+
+
+Started DELETE "/foods/6" for ::1 at 2020-07-24 11:52:47 -0400
+Processing by FoodsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"E2y3bjfY39SzbFIogy9qPsyRC3za3iK6sdev6oqr8g6cPQoQdH2cLAUZJSXhMBBC8S3WhQYA/tz7DewqaSXJGw==", "id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:55:in `set_foods!'
+  [1m[36mCACHE Food Load (0.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:41:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/foods_controller.rb:42:in `destroy'
+  [1m[36mFood Destroy (4.8ms)[0m  [1m[31mDELETE FROM "foods" WHERE "foods"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/foods_controller.rb:42:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/foods_controller.rb:42:in `destroy'
+Redirected to http://localhost:3000/foods
+Completed 302 Found in 15ms (ActiveRecord: 6.0ms | Allocations: 4599)
+
+
+Started GET "/foods" for ::1 at 2020-07-24 11:52:47 -0400
+Processing by FoodsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 827)
+Completed 200 OK in 8ms (Views: 4.4ms | ActiveRecord: 0.6ms | Allocations: 3734)
+
+
+Started GET "/foods/3" for ::1 at 2020-07-24 11:52:49 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.2ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  [1m[36mFood Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 3], ["LIMIT", 1]]
+  ↳ app/views/foods/show.html.erb:10
+  Rendered foods/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 873)
+Completed 200 OK in 9ms (Views: 5.0ms | ActiveRecord: 1.3ms | Allocations: 4258)
+
+
+Started GET "/foods/new" for ::1 at 2020-07-24 11:52:53 -0400
+Processing by FoodsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/new.html.erb within layouts/application
+  Rendered foods/_form.html.erb (Duration: 3.0ms | Allocations: 1571)
+  Rendered foods/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1845)
+Completed 200 OK in 11ms (Views: 7.2ms | ActiveRecord: 0.6ms | Allocations: 4798)
+
+
+Started POST "/foods" for ::1 at 2020-07-24 11:53:14 -0400
+Processing by FoodsController#create as HTML
+  Parameters: {"authenticity_token"=>"LCrjwpyKYI6kXPff5d+wrC465SEbyaSl/MMkOPbDrsP3VvvPeV0Mr54k8WznKHTxvU7DHJh64cZ5aWr2I83xtw==", "food"=>{"name"=>"Steak", "category"=>"Meat", "carbs"=>"0", "fats"=>"2", "proteins"=>"99", "calories"=>"150"}, "commit"=>"Create Food"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/foods_controller.rb:14:in `create'
+  [1m[36mFood Create (0.8ms)[0m  [1m[32mINSERT INTO "foods" ("name", "category", "carbs", "proteins", "fats", "calories", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "Steak"], ["category", "Meat"], ["carbs", 0], ["proteins", 99], ["fats", 2], ["calories", 150], ["user_id", 3], ["created_at", "2020-07-24 15:53:14.355273"], ["updated_at", "2020-07-24 15:53:14.355273"]]
+  ↳ app/controllers/foods_controller.rb:14:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/foods_controller.rb:14:in `create'
+Redirected to http://localhost:3000/foods/7
+Completed 302 Found in 11ms (ActiveRecord: 2.0ms | Allocations: 3688)
+
+
+Started GET "/foods/7" for ::1 at 2020-07-24 11:53:14 -0400
+Processing by FoodsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mFood Load (0.5ms)[0m  [1m[34mSELECT "foods".* FROM "foods" WHERE "foods"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/foods_controller.rb:27:in `show'
+  Rendering foods/show.html.erb within layouts/application
+  [1m[36mFood Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "foods" WHERE "foods"."user_id" = $1 AND "foods"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 7], ["LIMIT", 1]]
+  ↳ app/views/foods/show.html.erb:10
+  Rendered foods/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 914)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 1.1ms | Allocations: 4282)
+
+
+Started GET "/users/3/meals" for ::1 at 2020-07-24 11:53:21 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.6ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 4290)
+Completed 200 OK in 26ms (Views: 13.6ms | ActiveRecord: 5.7ms | Allocations: 9261)
+
+
+Started GET "/foods.3" for ::1 at 2020-07-24 11:53:22 -0400
+Processing by FoodsController#index as 
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering foods/index.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods"[0m
+  ↳ app/views/foods/index.html.erb:12
+  Rendered foods/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 877)
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 0.7ms | Allocations: 3686)
+
+
+Started GET "/users/3/meals" for ::1 at 2020-07-24 12:31:20 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.7ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1004)
+Completed 200 OK in 15ms (Views: 10.9ms | ActiveRecord: 1.3ms | Allocations: 5103)
+
+
+Started GET "/meals/1" for ::1 at 2020-07-24 12:31:22 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.1ms | Allocations: 3668)
+
+
+  
+NoMethodError (undefined method `foods' for nil:NilClass):
+  
+app/controllers/meals_controller.rb:34:in `show'
+Started GET "/meals/5" for ::1 at 2020-07-24 12:31:25 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.5ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (1.0ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  [1m[36mMeal Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/meals/show.html.erb:29
+  Rendered meals/show.html.erb within layouts/application (Duration: 9.4ms | Allocations: 2895)
+Completed 200 OK in 39ms (Views: 10.8ms | ActiveRecord: 7.5ms | Allocations: 13048)
+
+
+Started GET "/meals/1" for ::1 at 2020-07-24 12:31:31 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.6ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.3ms | Allocations: 3094)
+
+
+  
+NoMethodError (undefined method `foods' for nil:NilClass):
+  
+app/controllers/meals_controller.rb:34:in `show'
+Started GET "/users/3/meals" for ::1 at 2020-07-24 12:32:41 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1002)
+Completed 200 OK in 13ms (Views: 9.3ms | ActiveRecord: 0.6ms | Allocations: 4987)
+
+
+Started GET "/meals/1" for ::1 at 2020-07-24 12:32:45 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.5ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:65:in `set_meals!'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.3ms | Allocations: 3106)
+
+
+  
+NoMethodError (undefined method `foods' for nil:NilClass):
+  
+app/controllers/meals_controller.rb:34:in `show'
+Started GET "/meals/1" for ::1 at 2020-07-24 12:34:18 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:66:in `set_meals!'
+  [1m[36mMeal Load (0.5ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  Rendered meals/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1585)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 7.7ms | Allocations: 21182)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <ul>
+    2:   Name: <%= @meal.name %>
+    3:   <li>Carbs: <%=  %></li>
+    4:   <li>Fats: <%=  %></li>
+    5:   <li>Proteind: <%=  %></li>
+  
+app/views/meals/show.html.erb:2
+Started GET "/meals/1" for ::1 at 2020-07-24 12:34:54 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:68:in `set_meals!'
+  [1m[36mMeal Load (0.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:36:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  Rendered meals/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1206)
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 6.6ms | Allocations: 21417)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <ul>
+    2:   Name: <%= @meal.name %>
+    3:   <li>Carbs: <%=  %></li>
+    4:   <li>Fats: <%=  %></li>
+    5:   <li>Proteind: <%=  %></li>
+  
+app/views/meals/show.html.erb:2
+Started GET "/meals/1" for ::1 at 2020-07-24 12:35:09 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:68:in `set_meals!'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:36:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.5ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 1]]
+  ↳ app/views/meals/show.html.erb:11
+  [1m[36mMeal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/views/meals/show.html.erb:20
+  Rendered meals/show.html.erb within layouts/application (Duration: 16.3ms | Allocations: 7317)
+Completed 200 OK in 58ms (Views: 15.5ms | ActiveRecord: 11.2ms | Allocations: 29162)
+
+
+Started GET "/users/3/meals" for ::1 at 2020-07-24 12:35:14 -0400
+Processing by MealsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  Rendering meals/index.html.erb within layouts/application
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/views/meals/index.html.erb:6
+  Rendered meals/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 775)
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 0.6ms | Allocations: 3573)
+
+
+Started GET "/meals/5" for ::1 at 2020-07-24 12:35:16 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:68:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.4ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 5]]
+  ↳ app/views/meals/show.html.erb:11
+  [1m[36mMeal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/meals/show.html.erb:20
+  Rendered meals/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2237)
+Completed 200 OK in 25ms (Views: 8.3ms | ActiveRecord: 1.8ms | Allocations: 13399)
+
+
+Started GET "/meals/1" for ::1 at 2020-07-24 12:35:19 -0400
+Processing by MealsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mMeal Load (0.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:68:in `set_meals!'
+  [1m[36mMeal Load (0.3ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:33:in `show'
+  [1m[36mCACHE Meal Load (0.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals" WHERE "meals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meals_controller.rb:36:in `show'
+  Rendering meals/show.html.erb within layouts/application
+  [1m[36mFood Load (0.3ms)[0m  [1m[34mSELECT "foods".* FROM "foods" INNER JOIN "foodlogs" ON "foods"."id" = "foodlogs"."food_id" WHERE "foodlogs"."meal_id" = $1[0m  [["meal_id", 1]]
+  ↳ app/views/meals/show.html.erb:11
+  [1m[36mMeal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "meals" WHERE "meals"."user_id" = $1 AND "meals"."id" = $2 LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/views/meals/show.html.erb:20
+  Rendered meals/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1793)
+Completed 200 OK in 16ms (Views: 5.6ms | ActiveRecord: 1.3ms | Allocations: 6608)
+
+
