@@ -1,3 +1,5 @@
+<%= render partial:'/shared/errors', locals: {obj: @food} %>
+
 <%= form_for @food do |f| %>
 
   <%= f.label :name %>
@@ -7,14 +9,14 @@
   <%= f.text_field :category %> <br>
 
   <%= f.label :carbs %>
-  <%= f.number_field :carbs, in: 1..150, step: 1 %> <br>
+  <%= f.number_field :carbs, in: 0..150, step: 1 %> <br>
   <%= f.label :fats %>
-  <%= f.number_field :fats, in: 1..150, step: 1 %> <br>
+  <%= f.number_field :fats, in: 0..150, step: 1 %> <br>
   <%= f.label :proteins %>
-  <%= f.number_field :proteins, in: 1..150, step: 1 %> <br>
+  <%= f.number_field :proteins, in: 0..150, step: 1 %> <br>
 
   <%= f.label :calories %>
-  <%= f.number_field :calories, in: 1..150, step: 1 %> <br>
+  <%= f.number_field :calories, in: 0..150, step: 1 %> <br>
   
   <%= f.submit %>
 <% end %>

@@ -1,8 +1,8 @@
 class FoodsController < ApplicationController
 
   before_action :require_login
-  before_action :set_foods!, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_if_not_owner, only: [:show, :edit, :update]
+  before_action :set_foods!, only: [:edit, :update, :destroy]
+  before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
   
 
   def new
@@ -10,8 +10,8 @@ class FoodsController < ApplicationController
   end
   
   def create
-    @food = current_user.foods.build(food_params)
-    if @food.save
+    food = current_user.foods.build(food_params)
+    if food.save
       redirect_to food_path(food)
     else
       # @food = Food.find_by_id(params[:food_id])
@@ -24,22 +24,23 @@ class FoodsController < ApplicationController
   end
 
   def show
-    
+    @food = Food.find(params[:id])
   end
 
   def edit
-    
+    @food = current_user.foods.find_by_id(params[:id])
   end
 
   def update
-    
-    @food.update(food_params)
+    food = current_user.foods.find(params[:id])
+    food.update(food_params)
     redirect_to food_path(food)
   end
 
   def destroy
-    Food.find(params[:id]).destroy
-    redirect_to foods_url
+    food = current_user.foods.find_by_id(params[:id])
+    food.destroy
+    redirect_to foods_path
   end
 
   
@@ -50,7 +51,8 @@ class FoodsController < ApplicationController
   end
 
   def set_foods!
-    @food = Food.find(params[:id])
+    # @food = Food.find(params[:id])
+    @food = current_user.foods.find(params[:id])
   end
 
   def redirect_if_not_owner

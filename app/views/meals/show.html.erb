@@ -1,8 +1,28 @@
 <ul>
-  <li>Name: <%= @meal.name %></li>
+  Name: <%= @meal.name %>
+  <li>Carbs: <%=  %></li>
+  <li>Fats: <%=  %></li>
+  <li>Proteind: <%=  %></li>
   <li>Calories: <%=  %></li>
 </ul>
+<br>
 
-<%= link_to 'Create Meal', new_meal_path(@meal) %>
+<ul>
+    Foods: <%= @meal.foods.each do |food|%>
+    <li><%= food.name %></li>
+    <% end %>
+</ul>
+
+Find or Create, then Add food<br>
+<br>
+Create food<br>
+    <%= form_for @food do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %> <br>
+      
+      <%= f.submit %>
+    <% end %>
+<br>
+
+<%= link_to 'Create New Meal', new_meal_path(@meal) %>
 <%= button_to "Delete Meal", meal_path(@meal), method: :delete %>
-

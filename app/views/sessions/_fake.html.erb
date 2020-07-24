@@ -1,0 +1,7 @@
+<%= form_with(url: '/login') do |f| %>
+  <%= f.collection_select :name, User.all, :name, :name %>
+  
+  <%= f.password_field :password, id: 'password' %>
+
+  <%= f.submit "Sign In" %>
+<% end %>

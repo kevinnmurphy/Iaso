@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :foods
   resources :meals
   resources :foodlogs, only: %i[create update delete]
-  resources :users, only: %i[new create show update] do 
+  resources :users, only: %i[new create edit show update] do 
     resources :meals, only: %i[index show]
   end
 
@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   
-  # get '/logout', to: 'sessions#destroy'
-  delete '/logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
+  # delete '/logout', to: 'sessions#destroy'
 
   # custom route for scoped items
   # get 'meals/fatty', to: 'meals#fatty', as: 'fatty_meal'
