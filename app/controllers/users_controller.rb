@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    # before_action :permission_required, only: [:edit, :update, :destroy]
+    before_action :permission_required, only: [:show, :edit, :update, :destroy]
 
     def new
         @user = User.new
@@ -18,22 +18,22 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by_id(params[:id])
-        if !logged_in?
-            redirect_to root_path
-        end
     end
 
     def edit
-        if user = User.create(user_params)
-            session[:user_id] = user.id
-            redirect_to user_path(user)
-        else
-            render new_user_path
-        end
     end
 
     def update
+        current_user.update(user_params)
+        redirect_to user_path(current_user)
+        flash[:message] = "Successfully updated user."
+    end
 
+    def destroy
+		# current_user.meals.try.delete
+		# current_user.foodlogs.try.delete
+		current_user.destroy
+		redirect_to root_path
     end
 
 

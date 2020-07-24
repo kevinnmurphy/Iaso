@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     def permission_required
       unless @user = current_user
         flash[:alerts] = ["You don't have permission"]
-        redirect_to login_path
+        redirect_to root_path
       end 
     end
 
