@@ -2,12 +2,16 @@
 
  <%= link_to 'Create Meal', new_meal_path(@meal) %>
 
+
+Last Meal:
+
+@meal.
+
+Today's Meals:
+
 <ul>
   <% @meals.each do |meal| %>
-    <% if current_user.admin %>
-      <li><%= link_to "Edit #{meal.name}", meal_path(meal) %></li>
-    <% else %>
-      <li><%= link_to "View #{meal.name}", meal_path(meal) %></li>
-    <% end %>
+    <li><%= link_to "View #{meal.name}", meal_path(meal) %></li>
+
   <% end %>
 </ul>

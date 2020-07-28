@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  resources :foodlogs
-  resources :entries
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'welcome#home'
 
   resources :foods
-  resources :meals
-  resources :foodlogs, only: %i[create update destroy]
+  resources :meals do 
+    resources :foods, only: [:new, :create]
+    resources :foodlogs
+  end
+  resources :foodlogs
   resources :users, only: %i[new create edit show update destroy] do 
     resources :meals, only: %i[index show]
   end

@@ -1,12 +1,6 @@
- 
-
-  <%= form_for @meal do |f| %>
-
+<%= form_for @meal do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %> <br>
-
-
-
+  <%= f.select :name, options_for_select(["Breakfast", "Lunch", "Dinner", "Snack", "Drink"], @meal.name) %>
 
   <%= f.submit %>
 <% end %>

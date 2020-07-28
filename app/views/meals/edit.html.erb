@@ -1,4 +1,12 @@
 <h1>Edit:</h1>
-<%= render 'form' %>
+
+  <%= form_for @meal do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>
+
+  <%= f.submit %>
+<% end %>
+
 
 <%= button_to "Delete Meal", meal_path(@meal), method: :delete %>

@@ -1,18 +1,24 @@
 class FoodsController < ApplicationController
 
   before_action :require_login
-  before_action :set_foods!, only: [:edit, :update, :destroy]
+  before_action :find_foods, only: [:edit, :update, :destroy]
   # before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
   
 
   def new
-    @food = Food.new
+    if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
+        @food = @meal.foods.build
+    else
+        @food = Food.new
+        @food.build_meal
+    end
   end
   
   def create
+    meal = Meal.find_by_id(params[:meal_id])
     food = current_user.foods.build(food_params)
     if food.save
-      redirect_to food_path(food)
+      redirect_to meal_path(meal)
     else
       # @food = Food.find_by_id(params[:food_id])
       render :new
@@ -50,7 +56,7 @@ class FoodsController < ApplicationController
     params.require(:food).permit(:name, :category, :carbs, :fats, :proteins, :calories)
   end
 
-  def set_foods!
+  def find_foods
     # @food = Food.find(params[:id])
     @food = current_user.foods.find_by_id(params[:id])
   end

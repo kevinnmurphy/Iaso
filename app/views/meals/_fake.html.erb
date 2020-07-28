@@ -7,8 +7,18 @@
     <li><%= food.name %></li>
 </ul>
 
-show
 
+index
+
+    <% if current_user.admin %>
+      <li><%= link_to "Edit #{meal.name}", meal_path(meal) %></li>
+    <% else %>
+      <li><%= link_to "View #{meal.name}", meal_path(meal) %></li>
+    <% end %>
+
+
+
+<br>
 <% if current_user.admin %>
   <%= link_to 'Edit meal', edit_meal_path(@meal) %>
 <% else %>
@@ -19,13 +29,49 @@ show
   <% end %>
 <% end %>
 
-nested under meal_id
-    <%= form_for @food do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %> <br>
-      
-      <%= f.submit %>
-    <% end %>
-
     form errors
      <%= render partial:'/shared/errors', locals: {obj: @meal} %>
+
+partial
+     <%= render 'form' %>
+
+
+meal loop
+     <% @user.meals.each do |meal| %>
+  <%= meal.name %>
+  <% meal.foodlogs.each do |fl| %>
+    <%= fl.quantity %>: <%= fl.foods.name %><br>
+    Calories: <%= fl.foods.calories %><br>
+    Protein: <%= fl.foods.protein %><br>
+    Carbs: <%= fl.foods.carbs %><br>
+    Fat: <%= fl.foods.fat %><br>
+    Fiber: <%= fl.foods.fiber %><br>
+    Sugar: <%= fl.foods.sugar %><br>
+  <% end %>
+<% end %>
+
+Sbhow macros
+ <ul>
+    <li>Calories: <% @meal.calculate_calories %></li>
+    <li>Protein: <%# @meal.calculate_carbs %></li>
+    <li>Carbs: <%# @meal.calculate_fats %></li>
+    <li>Fat: <%# @meal.calculate_proteins %></li>
+</ul>
+
+
+
+  <%= f.text_field :food_id, list: 'foods' %> 
+  <datalist id="foods">
+    <% Food.all.each do |food| %>
+      <option value="<%= food.id%>">
+      <%= food.name %>
+      <%= " - " %>  
+      Calories:<%= food.calories %>
+      Carbs:<%= food.carbs %>
+      Fats:<%= food.fats %>
+      Proteins:<%= food.proteins %>
+      </option>
+    <% end %>
+  </datalist>
+
+  #check food logs for valid food_ids
