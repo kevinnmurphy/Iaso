@@ -8,17 +8,21 @@ class FoodsController < ApplicationController
   def new
     if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
         @food = @meal.foods.build
+        @foodlog = @food.foodlogs.build
     else
         @food = Food.new
         @food.build_meal
     end
   end
-  
+
   def create
-    meal = Meal.find_by_id(params[:meal_id])
+    # byebug
+    @meal = Meal.find_by_id(params[:meal_id])
     food = current_user.foods.build(food_params)
+
     if food.save
-      redirect_to meal_path(meal)
+      # redirect_to meal_foods_path(@meal)
+      redirect_to meal_path(@meal)
     else
       # @food = Food.find_by_id(params[:food_id])
       render :new
@@ -53,11 +57,12 @@ class FoodsController < ApplicationController
   private
 
   def food_params
-    params.require(:food).permit(:name, :category, :carbs, :fats, :proteins, :calories)
+    params.require(:food).permit(
+      :name, :category, :carbs, :fats, :proteins, :calories, 
+      foodlogs_attributes: [:quantity, :meal_id, :food_id])
   end
 
   def find_foods
-    # @food = Food.find(params[:id])
     @food = current_user.foods.find_by_id(params[:id])
   end
 

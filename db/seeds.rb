@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-f = User.create(name: "qwer", password: "qwer", email: "qwer@qwer.com")
-f.foods.create(name: "apple", calories: 150, carbs: 15, fats: 8, proteins: 25)
-f.meals.create(name: "breakfast")
-f.foodlogs.create(quantity: 2, foods_id: 1, meals_id: 1)
+# f = User.create(name: "qwer", password: "qwer", email: "qwer@qwer.com")
+# f.foods.create(name: "apple", calories: 150, carbs: 15, fats: 8, proteins: 25)
+# f.meals.create(name: "breakfast")
+# f.foodlogs.create(quantity: 2, food_id: 1, meal_id: 1)
 
 # 10.times do
 #     user_data = {

@@ -13,16 +13,19 @@ class Meal < ApplicationRecord
     # extend Search::ClassMethods
 
     def foodlogs_attributes=(foodlogs_attributes)
-        foodlogs_attributes.values.each do |foodlogs_attribute| 
-          foodlogs = Foodlog.find_or_create_by(foodlog_attribute)
-          self.foodlogs << foodlog
+        foodlogs_attributes.values.each do |foodlog_attributes| 
+            next unless foodlog_attributes[:quantity].present?
+            foodlog = Foodlog.find_or_create_by(foodlog_attributes)
+            self.foodlogs << foodlog
         end	  
     end
 
     def foods_attributes=(foods_attributes)
-        foods_attributes.values.each do |foods_attribute| 
-          foods = Food.find_or_create_by(food_attribute)
-          self.foods << food
+        foods_attributes.values.each do |food_attributes| 
+            # {"quantity"=>"1", "food_id"=>"8"}
+            next unless food_attributes.values.all? { |v| v.present? }
+            food = Food.find_or_create_by(food_attributes)
+            self.foods << food
         end	  
     end
 

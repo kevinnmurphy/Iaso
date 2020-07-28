@@ -4,7 +4,7 @@ Name: <%= @meal.name %><br>
 
  <ul>
  <%# byebug %>
-    <li>Calories: <% @meal.calculate_calories %></li>
+    <li>Calories: <%# @meal.calculate_calories %></li>
     <li>Protein: <%= "45...fake" %></li>
     <li>Carbs: <%= "45...fake" %></li>
     <li>Fat: <%= "45...fake" %></li>
@@ -28,44 +28,15 @@ Find or Create, then Add food<br>
   <%= f.hidden_field :meal_id%>:
   <%= f.label :food_id, "Choose Food" %>:
 
-  <%= f.collection_select(:food_id, Food.all, :id, :name)%> 
+  <%= f.collection_select(:food_id, @foods, :id, :name)%> 
 
   <%= f.number_field :quantity, in: 1..20, step: 1 %> <br>
 
   <%= f.submit %>
 <% end %>
 
-
-<br>
 <br>
 
-Move to nested route, add fields_for foodlogs, 
-Create New Food:<br>
-<ul>
-  <%= form_for [@meal, @food] do |f| %>
+<%= link_to "Create New Food", new_meal_food_path(@meal)%>
 
-    <li><%= f.label :name %>
-    <%= f.text_field :name %></li> 
-
-    <li><%= f.label :category %>
-    <%= f.text_field :category %> </li>
-
-    <li><%= f.label :carbs %>
-    <%= f.number_field :carbs, in: 0..150, step: 1 %></li>
-
-    <li><%= f.label :fats %>
-    <%= f.number_field :fats, in: 0..150, step: 1 %></li>
-
-    <li><%= f.label :proteins %>
-    <%= f.number_field :proteins, in: 0..150, step: 1 %></li>
-
-    <li><%= f.label :calories %>
-    <%= f.number_field :calories, in: 0..150, step: 1 %></li>
-    <br>
-    <%= f.submit "Create"%>
-  <% end %>
-</ul>
-
-<%= link_to "Create New Food", meal_foods_path(@meal)%>
-<br>
 <% end %>

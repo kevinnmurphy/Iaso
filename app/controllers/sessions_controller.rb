@@ -4,6 +4,10 @@ class SessionsController < ApplicationController
         @user = User.new
     end
 
+    def home
+        
+    end
+
     def omniauth  #login with omniauth
         # byebug
         user = User.from_omniauth(auth)

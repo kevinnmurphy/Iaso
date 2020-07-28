@@ -1,6 +1,6 @@
 
 
-<%= form_for @food do |f| %>
+<%= form_for [@meal, @food] do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %> <br>
@@ -17,6 +17,16 @@
 
   <%= f.label :calories %>
   <%= f.number_field :calories, in: 0..150, step: 1 %> <br>
+
+  <%= f.fields_for :foodlogs, @foodlog do |f|%>
+
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, in: 1..20, step: 1 %> <br>
+    
+    <%= f.hidden_field :meal_id, :value=> @meal.id %>
+
+  <% end%>
   
   <%= f.submit %>
+
 <% end %>

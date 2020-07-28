@@ -32,7 +32,7 @@ class MealsController < ApplicationController
   end
 
   def show
-    @foods = Food.all
+    @foods = Food.all.order_by_name
     @food = @meal.foods.build
     @foodlogs = @meal.foodlogs
     if @meal = current_user.meals.find_by_id(params[:id])
@@ -44,18 +44,13 @@ class MealsController < ApplicationController
 
   def edit
     @meal = current_user.meals.find_by_id(params[:id])
-    # @foodlogs = current_user.foodlogs.find_by_id(params[:id])
-    # @foods = Food.all
   end
 
   def update
     if meal = current_user.meals.find_by_id(params[:id])
     meal.update(meal_params)
-
-    # meal = @food.meals.update(meal_params)
     
     redirect_to meal_path(meal)
-    # @meal.foodlogs << foodlog
     else
       render :new
     end
@@ -71,7 +66,10 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name, food_attributes: [:name, :category, :carbs, :fats, :proteins, :calories], foodlog_attributes: [:quantity, :meal_id, :food_id])
+    params.require(:meal).permit(
+      :name, 
+      # foods_attributes: [:name, :category, :carbs, :fats, :proteins, :calories], 
+      foodlogs_attributes: [:quantity, :meal_id, :food_id])
   end
 
   def find_meals
