@@ -2,7 +2,6 @@ class FoodlogsController < ApplicationController
 
     def new
             @foodlogs = Foodlog.new
-            @foodlogs.build()
     end
     
     def create

@@ -3,11 +3,10 @@ Name: <%= @meal.name %><br>
 <%= link_to 'Edit Meal', edit_meal_path(@meal) %>
 
  <ul>
- <%# byebug %>
-    <li>Calories: <%# @meal.calculate_calories %></li>
-    <li>Protein: <%= "45...fake" %></li>
-    <li>Carbs: <%= "45...fake" %></li>
-    <li>Fat: <%= "45...fake" %></li>
+    <li>Calories: <%= @meal.calculate_calories if @meal.foodlogs.exists? %></li>
+    <li>Protein: <%= @meal.calculate_carbs if @meal.foodlogs.exists?  %></li>
+    <li>Carbs: <%= @meal.calculate_fats if @meal.foodlogs.exists?  %></li>
+    <li>Fat: <%= @meal.calculate_proteins if @meal.foodlogs.exists?  %></li>
 </ul>
 
 <br>
@@ -24,7 +23,7 @@ Name: <%= @meal.name %><br>
 Find or Create, then Add food<br>
 <br>
 
-<%= form_for @foodlog do |f| %>
+<%= form_for [@meal, @meal.foodlogs.build] do |f| %>
   <%= f.hidden_field :meal_id%>:
   <%= f.label :food_id, "Choose Food" %>:
 

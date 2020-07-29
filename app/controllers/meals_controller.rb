@@ -8,6 +8,7 @@ class MealsController < ApplicationController
   def new
     if params[:food_id] && @food = Food.find_by_id(params[:food_id])
       @meal = @food.meals.build
+      @foodlog = @food.foodlogs.build
     else
       @meal = Meal.new
     end
@@ -36,7 +37,7 @@ class MealsController < ApplicationController
     @food = @meal.foods.build
     @foodlogs = @meal.foodlogs
     if @meal = current_user.meals.find_by_id(params[:id])
-      @foodlog = @meal.foodlogs.build#(meal_params)
+      @foodlog = @meal.foodlogs.find_by_id(params[:id])
     else
       @meal = Meal.find_by_id(params[:id])
     end

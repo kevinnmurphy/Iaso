@@ -34,7 +34,8 @@ class Food < ApplicationRecord
 
     def foodlogs_attributes=(foodlogs_attributes)
         foodlogs_attributes.values.each do |foodlog_attributes| 
-            next unless foodlog_attributes[:quantity].present?
+            # next unless foodlog_attributes[:quantity].present?
+            next unless foodlog_attributes.values.all? { |v| v.present? }
             foodlog = Foodlog.find_or_create_by(foodlog_attributes)
             self.foodlogs << foodlog
         end	  

@@ -11,7 +11,6 @@ class FoodsController < ApplicationController
         @foodlog = @food.foodlogs.build
     else
         @food = Food.new
-        @food.build_meal
     end
   end
 

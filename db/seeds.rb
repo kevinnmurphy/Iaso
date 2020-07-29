@@ -6,10 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# f = User.create(name: "qwer", password: "qwer", email: "qwer@qwer.com")
-# f.foods.create(name: "apple", calories: 150, carbs: 15, fats: 8, proteins: 25)
-# f.meals.create(name: "breakfast")
-# f.foodlogs.create(quantity: 2, food_id: 1, meal_id: 1)
+# u = User.create(name: "qwer", password: "qwer", email: "qwer@qwer.com")
+
+# m = u.meals.build(name: "breakfast")
+
+# f = u.foods.build(name: "Apple", calories: 70, carbs: 9, fats: 0, proteins: 2)
+# u.foods.build(name: "Orange", calories: 90, carbs: 15, fats: 2, proteins: 3)
+# u.foods.build(name: "Banana", calories: 50, carbs: 20, fats: 1, proteins: 1)
+
+# u.meals.first.foodlogs.build(quantity: 2, food_id: f.id, meal_id: m.id)
 
 # 10.times do
 #     user_data = {
@@ -28,17 +33,21 @@
 #         fats: rand(15),
 #         proteins: rand(15)
 #     }
-#     f = Food.create(food_data)
+#     u.foods.build(food_data)
+#     # f = Food.create(food_data)
 # end
 
 # 10.times do
-#     user = User.all.first
+#     # user = User.all.first
+#     user  = u
 #     food = Food.all.sample
-#     food = foods.sample
+#     # meal = foods.sample
+#     meal = m
 #     data = {
 #         user_id: user.id,
 #         food_id: food.id,
 #         food: food
 #     }
-#     Meal.create(data)
+#     m.foodlogs.create(data)
+#     # Meal.create(data)
 # end
