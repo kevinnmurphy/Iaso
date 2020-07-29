@@ -20,18 +20,23 @@ class FoodlogsController < ApplicationController
     end
 
     def show
-        @foodlogs = Foodlog.find(params[:id])
+        @foodlog = Foodlog.find(params[:id])
     end
 
     def edit
-        @foods = Food.all.order_by_name
-        @foodlogs = current_user.foodlogs.find_by_id(params[:id])
+        if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
+            @foods = Food.all.order_by_name
+            @foodlog = @meal.foodlogs.find_by_id(params[:id])
+          else
+            @foodlog = current_user.foodlogs.find_by_id(params[:id])
+          end   
     end
 
     def update
         foodlog = current_user.foodlogs.find(params[:id])
         foodlog.update(foodlog_params)
-        redirect_to 
+        
+        redirect_to "/meals/#{foodlog.meal_id}"
     end
 
     def destroy
