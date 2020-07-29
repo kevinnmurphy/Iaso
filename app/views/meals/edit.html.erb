@@ -1,12 +1,20 @@
 <h1>Edit:</h1>
 
-  <%= form_for @meal do |f| %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %> <br>
-
-  <%= f.submit %>
-<% end %>
-
+<%= render 'form' %>
 
 <%= button_to "Delete Meal", meal_path(@meal), method: :delete %>
+
+<% if @meal.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@meal.errors.count, "error") %>
+      prohibited this meal from being saved:
+    </h2>
+ 
+    <ul>
+    <% @meal.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

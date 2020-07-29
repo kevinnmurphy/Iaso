@@ -24,6 +24,7 @@ class FoodlogsController < ApplicationController
     end
 
     def edit
+        @foods = Food.all.order_by_name
         @foodlogs = current_user.foodlogs.find_by_id(params[:id])
     end
 

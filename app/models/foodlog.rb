@@ -11,26 +11,8 @@ class Foodlog < ApplicationRecord
 
   scope :order_by_popular, -> { order() }
 
-  def calculate_macros(macro = :calories)
+  def log_macros(macro = :calories)
     self.quantity * self.food.send(macro)
   end
-  
-  def serving_calories
-    self.quantity * self.food.calories
-  end
 
-  def serving_carbs
-    self.quantity * self.food.carbs
-  end
-
-  def serving_fats
-    self.quantity * self.food.fats
-  end
-
-  def serving_proteins
-    self.quantity * self.food.proteins
-  end
-
-# Foodlog.create(quantity: 2, meal: Meal.second, food: Food.third)
-# Foodlog.create(quantity: 3, meal: Meal.find(8), food: Food.second)
 end

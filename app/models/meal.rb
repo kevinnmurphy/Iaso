@@ -45,59 +45,17 @@ class Meal < ApplicationRecord
     # def calculate_macros(macro)
     #     count = 0
     #     self.foodlogs.each do |foodlog|
-    #         count += foodlog.quantity * foodlog.food.(macro)
+    #         count += foodlog.quantity * foodlog.food.send(macro)
     #     end
     #     count
     # end
 
 
-    # def calculate_macros(macro)
-    #     count = 0
-    #     self.foodlogs.each do |foodlog|
-    #         count += foodlog.calculate_macros.send(macro)
-    #     end
-    #     count
-    # end
-
-
-    # def calculate_calories
-    #     count = 0
-    #     quantity = self.foodlogs.first.quantity
-    #     calories = self.foodlogs.first.food.calories
-    #     count = quantity * calories
-    #     count
-    # end
-
-    def calculate_calories
+    def calculate_macros(macro = :calories)
         count = 0
         self.foodlogs.each do |foodlog|
-            if !foodlog.id.nil?
-            count += foodlog.serving_calories
-            end
-        end
-        count
-    end
-
-    def calculate_carbs
-        count = 0
-        self.foodlogs.each do |foodlog|
-            count += foodlog.serving_carbs
-        end
-        count
-    end
-
-    def calculate_fats
-        count = 0
-        self.foodlogs.each do |foodlog|
-            count += foodlog.serving_fats
-        end
-        count
-    end
-
-    def calculate_proteins
-        count = 0
-        self.foodlogs.each do |foodlog|
-            count += foodlog.serving_proteins
+            item = foodlog.quantity * foodlog.food.send(macro)
+            count += item
         end
         count
     end

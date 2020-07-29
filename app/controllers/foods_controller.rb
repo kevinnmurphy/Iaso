@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
 
   before_action :require_login
-  before_action :find_foods, only: [:edit, :update, :destroy]
+  before_action :find_foods, only: [:update, :destroy]
   # before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
   
 
@@ -16,14 +16,18 @@ class FoodsController < ApplicationController
 
   def create
     # byebug
+    
     @meal = Meal.find_by_id(params[:meal_id])
     food = current_user.foods.build(food_params)
 
     if food.save
-      # redirect_to meal_foods_path(@meal)
-      redirect_to meal_path(@meal)
+      if params[:meal_id] 
+        redirect_to meal_path(@meal)
+      else
+        redirect_to food_path(food)
+      end
     else
-      # @food = Food.find_by_id(params[:food_id])
+      @food = Food.find_by_id(params[:food_id])
       render :new
     end
   end
@@ -37,7 +41,12 @@ class FoodsController < ApplicationController
   end
 
   def edit
-    @food = current_user.foods.find_by_id(params[:id])
+    if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
+      @food = @meal.foods.build
+      @foodlog = @food.foodlogs.build
+    else
+      @food = current_user.foods.find_by_id(params[:id])
+    end 
   end
 
   def update
@@ -48,7 +57,10 @@ class FoodsController < ApplicationController
 
   def destroy
     food = current_user.foods.find_by_id(params[:id])
+    # superpower, scope to admin only
+    Foodlog.find_by(food_id: food.id).destroy
     food.destroy
+    
     redirect_to foods_path
   end
 

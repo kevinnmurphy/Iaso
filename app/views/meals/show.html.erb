@@ -3,17 +3,18 @@ Name: <%= @meal.name %><br>
 <%= link_to 'Edit Meal', edit_meal_path(@meal) %>
 
  <ul>
-    <li>Calories: <%= @meal.calculate_calories if @meal.foodlogs.exists? %></li>
-    <li>Protein: <%= @meal.calculate_carbs if @meal.foodlogs.exists?  %></li>
-    <li>Carbs: <%= @meal.calculate_fats if @meal.foodlogs.exists?  %></li>
-    <li>Fat: <%= @meal.calculate_proteins if @meal.foodlogs.exists?  %></li>
+    <li>Calories: <%# @meal.foodlogs.exists? ? @meal.meal_macros("calories") : "0" %>
+    <%= @meal.foodlogs.exists? ? @meal.calculate_macros : "0" %></li>
+    <li>Carbs: <%= @meal.foodlogs.exists? ? @meal.calculate_macros(:carbs) : "0" %></li>
+    <li>Fats: <%= @meal.foodlogs.exists? ? @meal.calculate_macros(:fats) : "0" %></li>
+    <li>Proteins: <%= @meal.foodlogs.exists? ? @meal.calculate_macros(:proteins) : "0" %></li>
 </ul>
 
 <br>
 
 <ul>
   Food Quantities: <% @foodlogs.each do |log|%>
-    <li><%= log.quantity %>x <%= log.food.name %><%= " - " %><%= link_to("Edit", meal_foodlog_path(log))%> <%= button_to("Delete", foodlog_path(log), method: 'delete' )%>
+    <li><%= log.quantity %>x <%= log.food.name %><%= " - " %><%= link_to "Edit", edit_foodlog_path(log) %><%= button_to("Delete", foodlog_path(log), method: 'delete' )%></li>
   <% end %>
 </ul>
 

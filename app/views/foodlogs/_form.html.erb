@@ -1,0 +1,10 @@
+<%= form_for @foodlogs do |f| %>
+  <%= f.hidden_field :meal_id%>:
+  <%= f.label :food_id, "Choose Food" %>:
+
+  <%= f.collection_select(:food_id, @foods, :id, :name)%> 
+
+  <%= f.number_field :quantity, in: 1..20, step: 1 %> <br>
+
+  <%= f.submit %>
+<% end %>

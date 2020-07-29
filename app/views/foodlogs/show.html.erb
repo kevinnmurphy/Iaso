@@ -1,0 +1,42 @@
+Name: <%= @meal.name %><br>
+
+<%= link_to 'Edit Meal', edit_meal_path(@meal) %>
+
+ <ul>
+    <li>Calories: <%# @meal.foodlogs.exists? ? @meal.meal_macros("calories") : "0" %>
+    <%= @meal.foodlogs.exists? ? @meal.calculate_macros : "0" %></li>
+    <li>Carbs: <%= @meal.foodlogs.exists? ? @meal.calculate_macros(:carbs) : "0" %></li>
+    <li>Fats: <%= @meal.foodlogs.exists? ? @meal.calculate_macros(:fats) : "0" %></li>
+    <li>Proteins: <%= @meal.foodlogs.exists? ? @meal.calculate_macros(:proteins) : "0" %></li>
+</ul>
+
+<br>
+
+<ul>
+  Food Quantities: <% @foodlogs.each do |log|%>
+    <li><%= log.quantity %>x <%= log.food.name %><%= " - " %><%= link_to "Edit", edit_foodlog_path(log) %><%= button_to("Delete", foodlog_path(log), method: 'delete' )%></li>
+  <% end %>
+</ul>
+
+
+<% if  current_user.meals.include?(@meal) %>
+
+Find or Create, then Add food<br>
+<br>
+
+<%= form_for [@meal, @meal.foodlogs.build] do |f| %>
+  <%= f.hidden_field :meal_id%>:
+  <%= f.label :food_id, "Choose Food" %>:
+
+  <%= f.collection_select(:food_id, @foods, :id, :name)%> 
+
+  <%= f.number_field :quantity, in: 1..20, step: 1 %> <br>
+
+  <%= f.submit %>
+<% end %>
+
+<br>
+
+<%= link_to "Create New Food", new_meal_food_path(@meal)%>
+
+<% end %>
