@@ -52,7 +52,8 @@ class FoodsController < ApplicationController
   def update
     food = current_user.foods.find(params[:id])
     food.update(food_params)
-    redirect_to food_path(food)
+    
+    redirect_to meal_path(@meal)
   end
 
   def destroy
