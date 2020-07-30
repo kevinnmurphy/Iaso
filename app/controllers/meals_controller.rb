@@ -2,7 +2,7 @@ class MealsController < ApplicationController
 
   before_action :require_login
   before_action :find_meals, only: [:show, :edit, :update]
-  # before_action :redirect_if_not_owner,  only: [:show, :edit, :update, :destroy]
+  # before_action :redirect_if_not_owner,  only: [:update, :destroy]
 
 
   def new
@@ -28,7 +28,8 @@ class MealsController < ApplicationController
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
         @meals = @user.meals
     else
-        @meals = Meal.all 
+      @meals = current_user.meals
+      # @meals = Meal.all 
     end
   end
 

@@ -1,4 +1,4 @@
- <h1> All of the Meals </h1> 
+ <h2> All of the Meals </h2> 
 
  <%= link_to 'Create Meal', new_meal_path(@meal) %>
 
@@ -11,7 +11,7 @@ Today's Meals:
 
 <ul>
   <% @meals.each do |meal| %>
-    <li><%= link_to "View #{meal.name}", meal_path(meal) %></li>
+    <li><%= link_to "#{meal.name} (#{meal.pretty_date})", meal_path(meal) %></li>
 
   <% end %>
 </ul>

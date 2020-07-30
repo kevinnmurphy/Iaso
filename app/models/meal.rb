@@ -34,6 +34,14 @@ class Meal < ApplicationRecord
         Meal.all.today
     end
 
+    def pretty_date
+        self.created_at.strftime("%A, %d %b %Y %l:%M %p")
+    end
+
+    def short_date
+        self.created_at.strftime("%b %d, %Y")
+    end
+
     def self.today 
         where("created_at >= ?", Time.now.beginning_of_day) 
     end

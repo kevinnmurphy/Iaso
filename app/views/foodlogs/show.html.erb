@@ -1,5 +1,10 @@
 <h1>Foodlog</h1>
 <ul>
   Food Quantities:
-    <li><%= @foodlogs.quantity %>x <%= @foodlogs.food.name %><%= " - " %><%= link_to "Edit", edit_foodlog_path(@foodlogs) %><%= button_to("Delete", foodlog_path(@foodlogs), method: 'delete' )%></li>
+    <li><%= @foodlogs.quantity %>x <%= @foodlogs.food.name %><%= " - " %>
+    
+    <% if  current_user.foodlogs.include?(@foodlogs) %>
+    <%= link_to "Edit", edit_foodlog_path(@foodlogs) %><%= button_to("Delete", foodlog_path(@foodlogs), method: 'delete' )%>
+    <% end %>
+    </li>
 </ul>

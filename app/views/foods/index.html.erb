@@ -1,13 +1,7 @@
-  <h1>All of the Foods</h1>
+  <h2>All of the Foods</h2>
 
   <%= link_to 'Create Food', new_food_path(@food) %>
 
-  <ul>
-  <li>drop_down Food link_to</li><br>
-  <li>link_to Favorite Foods (most used)</li>
-
-</ul>
-  
 <ul>
   <% @foods.each do |food| %>
     <% if current_user.admin %>

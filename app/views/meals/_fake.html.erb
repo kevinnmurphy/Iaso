@@ -1,11 +1,5 @@
 <%= collection_select(:food, :food_ids, Food.all, :id, :food) %>
 <%= options_from_collection_for_select(@food, :id, :name, params[:id]) %>
-  
-
-<ul>
-    Foods: <%= @meal.foods.each do |food|%>
-    <li><%= food.name %></li>
-</ul>
 
 
 index
@@ -34,42 +28,3 @@ index
 
 partial
      <%= render 'form' %>
-
-
-meal loop
-     <% @user.meals.each do |meal| %>
-  <%= meal.name %>
-  <% meal.foodlogs.each do |fl| %>
-    <%= fl.quantity %>: <%= fl.foods.name %><br>
-    Calories: <%= fl.foods.calories %><br>
-    Protein: <%= fl.foods.protein %><br>
-    Carbs: <%= fl.foods.carbs %><br>
-    Fat: <%= fl.foods.fat %><br>
-    Fiber: <%= fl.foods.fiber %><br>
-    Sugar: <%= fl.foods.sugar %><br>
-  <% end %>
-<% end %>
-
-Sbhow macros
- <ul>
-    <li>Calories: <% @meal.calculate_calories %></li>
-    <li>Protein: <%# @meal.calculate_carbs %></li>
-    <li>Carbs: <%# @meal.calculate_fats %></li>
-    <li>Fat: <%# @meal.calculate_proteins %></li>
-</ul>
-
-
-
-  <%= f.text_field :food_id, list: 'foods' %> 
-  <datalist id="foods">
-    <% Food.all.each do |food| %>
-      <option value="<%= food.id%>">
-      <%= food.name %>
-      <%= " - " %>  
-      Calories:<%= food.calories %>
-      Carbs:<%= food.carbs %>
-      Fats:<%= food.fats %>
-      Proteins:<%= food.proteins %>
-      </option>
-    <% end %>
-  </datalist>

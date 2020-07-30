@@ -15,4 +15,8 @@ class Foodlog < ApplicationRecord
     self.quantity * self.food.send(macro)
   end
 
+  def self.today 
+    where("created_at >= ?", Time.now.beginning_of_day) 
+  end
+
 end

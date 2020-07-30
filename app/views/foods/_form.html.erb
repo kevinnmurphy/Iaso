@@ -3,26 +3,26 @@
 <%= form_for [@meal, @food] do |f| %>
 
   <%= f.label :name %>
-  <%= f.text_field :name %> <br>
+  <%= f.text_field :name, placeholder: "Name" %> <br>
 
   <%= f.label :category %>
   <%# f.text_field :category %> 
   <%= f.select :category, options_for_select(["Dairy", "Fruit", "Grain", "Oil", "Protein", "Vegetable", "Other"]) %><br>
 
   <%= f.label :carbs %>
-  <%= f.number_field :carbs, in: 0..150, step: 1 %> <br>
+  <%= f.number_field :carbs, in: 0..150, step: 1, value: 0%> <br>
   <%= f.label :fats %>
-  <%= f.number_field :fats, in: 0..150, step: 1 %> <br>
+  <%= f.number_field :fats, in: 0..150, step: 1, value: 0 %> <br>
   <%= f.label :proteins %>
-  <%= f.number_field :proteins, in: 0..150, step: 1 %> <br>
+  <%= f.number_field :proteins, in: 0..150, step: 1, value: 0 %> <br>
 
   <%= f.label :calories %>
-  <%= f.number_field :calories, in: 0..500, step: 1 %> <br>
+  <%= f.number_field :calories, in: 0..500, step: 1, value: 0 %> <br>
 
   <%= f.fields_for :foodlogs, @foodlog do |f|%>
 
     <%= f.label :quantity %>
-    <%= f.number_field :quantity, in: 1..20, step: 1 %> <br>
+    <%= f.number_field :quantity, in: 1..20, step: 1, value: 1 %> <br>
     
     <%= f.hidden_field :meal_id, :value=> @meal.id %>
 

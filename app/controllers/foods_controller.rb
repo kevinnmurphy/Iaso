@@ -50,10 +50,14 @@ class FoodsController < ApplicationController
   end
 
   def update
+
     food = current_user.foods.find(params[:id])
     food.update(food_params)
-    
-    redirect_to meal_path(@meal)
+    if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
+      redirect_to meal_path(@meal)
+    else
+      redirect_to food_path(food)
+    end 
   end
 
   def destroy

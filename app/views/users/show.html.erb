@@ -1,14 +1,25 @@
 <h1>Welcome, <%= @user.name.titleize %>.</h1>
 
 <h4>Today's Stats:</h4>
+
+Meals:<%= current_user.meals.today.count %>
 <br>
-Meals: 2<br>
-Foods: 4<br>
+Foods: <%=  %>
+<br>
 <br>
 Carbs: 34<br>
+    <% calorie_count = 0 %>
+    <% current_user.meals.today.each do |meal| %>
+        <% count = meal.calculate_macros(:carbs)%>
+        <%= calorie_count += count %>
+    <% end %>
 Fats: 35<br>
+
 Proteins: 57<br>
+
 <br>
+
+
 Calories Eaten: 1356<br>
 Calories Left: 740<br>
 

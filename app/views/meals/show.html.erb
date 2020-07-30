@@ -1,6 +1,6 @@
-Name: <%= @meal.name %><br>
-
+<h3><%= "#{@meal.name} (#{@meal.short_date})" %></h3>
 <%= link_to 'Edit Meal', edit_meal_path(@meal) %>
+<br>
 
  <ul>
     <li>Calories: <%# @meal.foodlogs.exists? ? @meal.meal_macros("calories") : "0" %>
@@ -12,8 +12,9 @@ Name: <%= @meal.name %><br>
 
 <br>
 
+<h4>Food Logs: </h4>
 <ul>
-  Food Quantities: <% @foodlogs.each do |log|%>
+ <% @foodlogs.each do |log|%>
     <li><%= log.quantity %>x <%= log.food.name %><%= " - " %><%= link_to "Edit", edit_meal_foodlog_path(@meal, log) %><%= button_to("Delete", foodlog_path(log), method: 'delete' )%></li>
   <% end %>
 </ul>
@@ -25,12 +26,12 @@ Find or Create, then Add food<br>
 <br>
 
 <%= form_for @meal.foodlogs.build do |f| %>
-  <%= f.hidden_field :meal_id%>:
-  <%= f.label :food_id, "Choose Food" %>:
+  <%= f.hidden_field :meal_id%>
+  <%= f.label :food_id, "Choose Food: " %>
 
   <%= f.collection_select(:food_id, @foods, :id, :name)%> 
 
-  <%= f.number_field :quantity, in: 1..20, step: 1 %> <br>
+  <%= f.number_field :quantity, in: 1..20, step: 1, value: 1 %> <br>
 
   <%= f.submit %>
 <% end %>
