@@ -1,8 +1,8 @@
 class FoodsController < ApplicationController
 
   before_action :require_login
-  before_action :find_foods, only: [:update, :destroy]
-  # before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
+  before_action :find_foods, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
   
 
   def new
@@ -51,20 +51,20 @@ class FoodsController < ApplicationController
 
   def update
 
-    food = current_user.foods.find(params[:id])
-    food.update(food_params)
+    @food = current_user.foods.find(params[:id])
+    @food.update(food_params)
     if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
       redirect_to meal_path(@meal)
     else
-      redirect_to food_path(food)
+      redirect_to food_path(@food)
     end 
   end
 
   def destroy
-    food = current_user.foods.find_by_id(params[:id])
+    @food = current_user.foods.find_by_id(params[:id])
     # superpower, scope to admin only
     Foodlog.find_by(food_id: food.id).destroy
-    food.destroy
+    @food.destroy
     
     redirect_to foods_path
   end

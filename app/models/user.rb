@@ -21,7 +21,7 @@ class User < ApplicationRecord
     # validates :name, email, height, weight, presence: true
     # validates_length_of :password, within: 5..72
 
-    validates :email, presence: true, email: true
+    validates :email, presence: true#, email: true
 
     # validates :height, presence: true
     # validates :weight, presence: true

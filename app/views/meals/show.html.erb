@@ -22,12 +22,11 @@
 
 <% if  current_user.meals.include?(@meal) %>
 
-Find or Create, then Add food<br>
 <br>
 
 <%= form_for @meal.foodlogs.build do |f| %>
   <%= f.hidden_field :meal_id%>
-  <%= f.label :food_id, "Choose Food: " %>
+  <%= f.label :food_id, "Add Food: " %>
 
   <%= f.collection_select(:food_id, @foods, :id, :name)%> 
 

@@ -1,16 +1,18 @@
 <h1>Welcome, <%= @user.name.titleize %>.</h1>
 
+Height: <%= @user.height.nil? ? 0 : @user.height%><br>
+Weight: <%= @user.weight.nil? ? 0 : @user.weight %><br>
+
+
 <h4>Today's Stats:</h4>
 
-Meals: <%= current_user.meals.size %>
+Meals: <%= current_user.meals.today.size %>
 <br>
 
-
-<br>
 <br>
 Carbs: 
 <% carb_count = 0 %>
-<% current_user.meals.each do |meal| %>
+<% current_user.meals.today.each do |meal| %>
     <% count = meal.calculate_macros(:carbs)%>
     <% carb_count += count %>
 <% end %>
@@ -18,7 +20,7 @@ Carbs:
 <br>
 Fats: 
 <% fat_count = 0 %>
-<% current_user.meals.each do |meal| %>
+<% current_user.meals.today.each do |meal| %>
     <% count = meal.calculate_macros(:fats)%>
     <% fat_count += count %>
 <% end %>
@@ -27,7 +29,7 @@ Fats:
 
 Proteins: 
 <% protein_count = 0 %>
-<% current_user.meals.each do |meal| %>
+<% current_user.meals.today.each do |meal| %>
     <% count = meal.calculate_macros(:proteins)%>
     <% protein_count += count %>
 <% end %>
@@ -39,7 +41,7 @@ Proteins:
 
 Calories Eaten:
 <% calorie_count = 0 %>
-<% current_user.meals.each do |meal| %>
+<% current_user.meals.today.each do |meal| %>
     <% count = meal.calculate_macros(:calories)%>
     <% calorie_count += count %>
 <% end %>

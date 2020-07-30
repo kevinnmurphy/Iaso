@@ -1,11 +1,11 @@
 class FoodlogsController < ApplicationController
 
-    # before_action :require_login
-    # before_action :find_foodlogs, only: [:update, :destroy]
+    before_action :require_login
+    before_action :find_foodlogs, only: [:show, :edit, :update, :destroy]
     # before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
 
     def new
-            @foodlogs = Foodlog.new
+        @foodlogs = Foodlog.new
     end
     
     def create
@@ -24,29 +24,25 @@ class FoodlogsController < ApplicationController
     end
 
     def show
-        @foodlog = Foodlog.find(params[:id])
+
     end
 
     def edit
-        if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
-            @foods = Food.all.order_by_name
-            @foodlog = @meal.foodlogs.find_by_id(params[:id])
-          else
-            @foodlog = current_user.foodlogs.find_by_id(params[:id])
-          end   
+
+        @foods = Food.all.order_by_name
     end
 
     def update
-        foodlog = current_user.foodlogs.find(params[:id])
-        foodlog.update(foodlog_params)
+
+        @foodlog.update(foodlog_params)
         
-        redirect_to "/meals/#{foodlog.meal_id}"
+        redirect_to "/meals/#{@foodlog.meal_id}"
     end
 
     def destroy
-        foodlog = current_user.foodlogs.find_by_id(params[:id])
-        foodlog.destroy
-        redirect_to "/meals/#{foodlog.meal_id}"
+
+        @foodlog.destroy
+        redirect_to "/meals/#{@foodlog.meal_id}"
     end
 
     private
@@ -56,7 +52,7 @@ class FoodlogsController < ApplicationController
     end
 
     def find_foodlogs
-        @foodlog = current_user.foodlogs.find_by_id(params[:id])
+        @foodlog = Foodlog.find(params[:id])
     end
     
     def redirect_if_not_owner

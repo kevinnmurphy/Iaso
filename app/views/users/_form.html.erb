@@ -13,5 +13,11 @@
   <%= f.label :email %> <br>
   <%= f.email_field :email %><br>
 
+  <%= f.label :height %>
+  <%= f.number_field :height, in: 0..300, step: 1%> <br>
+
+  <%= f.label :weight %>
+  <%= f.number_field :weight, in: 0..1000, step: 1%> <br>
+
   <%= f.submit %>
 <% end %>
