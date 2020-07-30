@@ -2,25 +2,56 @@
 
 <h4>Today's Stats:</h4>
 
-Meals:<%= current_user.meals.today.count %>
+Meals: <%= current_user.meals.count %>
 <br>
-Foods: <%=  %>
+Foods: 
+<% food_count = 0 %>
+<% current_user.meals.each do |meal| %>
+    <% count = meal.foods.count%>
+    <% food_count += count %>
+<% end %>
+<%= food_count %>
 <br>
 <br>
-Carbs: 34<br>
-    <% calorie_count = 0 %>
-    <% current_user.meals.today.each do |meal| %>
-        <% count = meal.calculate_macros(:carbs)%>
-        <%= calorie_count += count %>
-    <% end %>
-Fats: 35<br>
+Carbs: 
+<% carb_count = 0 %>
+<% current_user.meals.each do |meal| %>
+    <% count = meal.calculate_macros(:carbs)%>
+    <% carb_count += count %>
+<% end %>
+<%= carb_count %>
+<br>
+Fats: 
+<% fat_count = 0 %>
+<% current_user.meals.each do |meal| %>
+    <% count = meal.calculate_macros(:fats)%>
+    <% fat_count += count %>
+<% end %>
+<%= fat_count %>
+<br>
 
-Proteins: 57<br>
+Proteins: 
+<% protein_count = 0 %>
+<% current_user.meals.each do |meal| %>
+    <% count = meal.calculate_macros(:proteins)%>
+    <% protein_count += count %>
+<% end %>
+<%= protein_count %>
+<br>
 
 <br>
 
 
-Calories Eaten: 1356<br>
-Calories Left: 740<br>
+Calories Eaten:
+<% calorie_count = 0 %>
+<% current_user.meals.each do |meal| %>
+    <% count = meal.calculate_macros(:calories)%>
+    <% calorie_count += count %>
+<% end %>
+<%= calorie_count %>
+<br>
+Calories Left:
+<%= 2000 - calorie_count %>
+<br>
 
 <%= link_to 'Edit Profile', edit_user_path %>
