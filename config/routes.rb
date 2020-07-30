@@ -28,5 +28,6 @@ Rails.application.routes.draw do
   # match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   get '/auth/:provider/callback', to: 'sessions#omniauth'
  
+  # get '*path', to: redirect { '/' }
 
 end

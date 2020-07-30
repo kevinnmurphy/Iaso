@@ -18,9 +18,11 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by_id(params[:id])
+        @meals = current_user.meals.includes(foodlogs:[:foods])
     end
 
     def edit
+        @user = User.find_by_id(params[:id])
     end
 
     def update

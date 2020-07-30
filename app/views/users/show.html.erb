@@ -2,15 +2,10 @@
 
 <h4>Today's Stats:</h4>
 
-Meals: <%= current_user.meals.count %>
+Meals: <%= current_user.meals.size %>
 <br>
-Foods: 
-<% food_count = 0 %>
-<% current_user.meals.each do |meal| %>
-    <% count = meal.foods.count%>
-    <% food_count += count %>
-<% end %>
-<%= food_count %>
+
+
 <br>
 <br>
 Carbs: 

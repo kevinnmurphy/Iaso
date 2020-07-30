@@ -46,18 +46,17 @@ class Meal < ApplicationRecord
         where("created_at >= ?", Time.now.beginning_of_day) 
     end
 
+    def food_count
+        food_count = 0
+        self.each do |meal|
+            count = meal.foods.size
+            food_count += count
+        end
+    end
+
     # Today.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)
 
     # Author.joins(:articles).where(articles: { author: author })
-
-    # def calculate_macros(macro)
-    #     count = 0
-    #     self.foodlogs.each do |foodlog|
-    #         count += foodlog.quantity * foodlog.food.send(macro)
-    #     end
-    #     count
-    # end
-
 
     def calculate_macros(macro = :calories)
         count = 0
