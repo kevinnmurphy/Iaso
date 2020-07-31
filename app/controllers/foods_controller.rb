@@ -20,13 +20,15 @@ class FoodsController < ApplicationController
     @meal = Meal.find_by_id(params[:meal_id])
     food = current_user.foods.build(food_params)
 
-    if food.save
+    if food.valid?
+      food.save
       if params[:meal_id] 
         redirect_to meal_path(@meal)
       else
         redirect_to food_path(food)
       end
     else
+      @meal = Meal.find_by_id(params[:meal_id])
       @food = Food.find_by_id(params[:food_id])
       render :new
     end

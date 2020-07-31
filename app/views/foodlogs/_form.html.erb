@@ -1,3 +1,6 @@
+<%= render partial:'/shared/errors', locals: {obj: @foodlog} %>
+<%= render partial:'/shared/errors', locals: {obj: @meal} %>
+
 <%= form_for [@meal, @foodlog] do |f| %>
   <%= f.hidden_field :meal_id%>:
   <%= f.label :food_id, "Choose Food" %>:

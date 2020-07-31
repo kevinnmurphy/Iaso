@@ -3,7 +3,7 @@ class ErrorsController < ApplicationController
   # rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   def not_found
-    redirect_to error_path, alert: "Resource doesn't exist"
+    redirect_to root_path, alert: "Resource doesn't exist"
   end
 
 

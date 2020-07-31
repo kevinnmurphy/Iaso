@@ -6,6 +6,7 @@ class Meal < ApplicationRecord
     has_many :foods, through: :foodlogs, dependent: :destroy
 
     validates :name, presence: true
+    validates :name, inclusion: { in: ["Breakfast", "Lunch", "Dinner", "Snack", "Drink"] }
 
     scope :order_by_calories, -> { order(price: :desc)}
     scope :order_by_carbs, -> { order(carbs: :desc)}

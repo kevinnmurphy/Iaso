@@ -16,9 +16,12 @@ class MealsController < ApplicationController
 
   def create
     meal = current_user.meals.build(meal_params)
-    if meal.save
+    if meal.valid?
+      meal.save
+
       redirect_to meal_path(meal)
     else
+      @meal = Meal.new
       render :new
     end
   end

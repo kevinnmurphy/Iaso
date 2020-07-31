@@ -12,6 +12,7 @@ class Food < ApplicationRecord
 
     validates :name, presence: true
     validates :name, uniqueness: true
+    validates :category, inclusion: { in: ["Dairy", "Fruit", "Grain", "Oil", "Protein", "Vegetable", "Other"] }
     validates :calories, presence: true
     validates :calories, numericality: { greater_than_or_equal_to: 0}
     validates :carbs, :proteins, :fats, presence: true
