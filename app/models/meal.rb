@@ -2,8 +2,8 @@ class Meal < ApplicationRecord
     # t.string :name
 
     belongs_to :user
-    has_many :foodlogs
-    has_many :foods, through: :foodlogs
+    has_many :foodlogs, dependent: :destroy
+    has_many :foods, through: :foodlogs, dependent: :destroy
 
     validates :name, presence: true
 

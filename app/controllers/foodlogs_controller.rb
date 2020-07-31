@@ -2,7 +2,7 @@ class FoodlogsController < ApplicationController
 
     before_action :require_login
     before_action :find_foodlogs, only: [:show, :edit, :update, :destroy]
-    # before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
+    before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
 
     def new
         @foodlogs = Foodlog.new
@@ -28,11 +28,18 @@ class FoodlogsController < ApplicationController
     end
 
     def edit
-
         @foods = Food.all.order_by_name
     end
 
     def update
+
+        # if @foodlog = current_user.foodlogs.find_by_id(params[:id])
+        #     foodlog.update(meal_params)
+            
+        #     redirect_to meal_path(@meal)
+        # else
+        #     render :new
+        # end
 
         @foodlog.update(foodlog_params)
         
@@ -40,10 +47,10 @@ class FoodlogsController < ApplicationController
     end
 
     def destroy
-
         @foodlog.destroy
         redirect_to "/meals/#{@foodlog.meal_id}"
     end
+
 
     private
 
@@ -56,7 +63,7 @@ class FoodlogsController < ApplicationController
     end
     
     def redirect_if_not_owner
-        if @foodlog.user != current_user
+        if @foodlog.meal.user != current_user
             redirect_to user_path(current_user), alert: "You do not have permission to edit this"
         end
     end

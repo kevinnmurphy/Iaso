@@ -8,7 +8,7 @@ class Food < ApplicationRecord
 
     belongs_to :user
     has_many :foodlogs
-    has_many :meals, through: :foodlogs
+    has_many :meals, through: :foodlogs, dependent: :destroy
 
     validates :name, presence: true
     validates :name, uniqueness: true

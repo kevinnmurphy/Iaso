@@ -6,6 +6,17 @@ Weight: <%= @user.weight.nil? ? 0 : @user.weight %><br>
 
 <h4>Today's Stats:</h4>
 
+<% calorie_count = 0 %>
+<% current_user.meals.today.each do |meal| %>
+    <% count = meal.calculate_macros(:calories)%>
+    <% calorie_count += count %>
+<% end %>
+
+Calories Eaten: <%= calorie_count %>
+<br>
+Calories Left: <%= 2000 - calorie_count %>
+<br>
+<br>
 Meals: <%= current_user.meals.today.size %>
 <br>
 
@@ -36,19 +47,6 @@ Proteins:
 <%= protein_count %>
 <br>
 
-<br>
-
-
-Calories Eaten:
-<% calorie_count = 0 %>
-<% current_user.meals.today.each do |meal| %>
-    <% count = meal.calculate_macros(:calories)%>
-    <% calorie_count += count %>
-<% end %>
-<%= calorie_count %>
-<br>
-Calories Left:
-<%= 2000 - calorie_count %>
 <br>
 
 <%= link_to 'Edit Profile', edit_user_path %>

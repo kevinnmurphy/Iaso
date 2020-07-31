@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
 
   before_action :require_login
-  before_action :find_meals, only: [:show]
+  before_action :find_meals, only: [:edit, :update, :destroy]
   # before_action :redirect_if_not_owner,  only: [:update, :destroy]
 
 
@@ -34,14 +34,11 @@ class MealsController < ApplicationController
   end
 
   def show
+    @meal = Meal.find_by_id(params[:id])
+    @foodlog = @meal.foodlogs.find_by_id(params[:id])
     @foods = Food.all.order_by_name
     @food = @meal.foods.build
     @foodlogs = @meal.foodlogs
-    if @meal = current_user.meals.find_by_id(params[:id])
-      @foodlog = @meal.foodlogs.find_by_id(params[:id])
-    else
-      @meal = Meal.find_by_id(params[:id])
-    end
   end
 
   def edit
@@ -49,17 +46,13 @@ class MealsController < ApplicationController
   end
 
   def update
-    if @meal = current_user.meals.find_by_id(params[:id])
     @meal.update(meal_params)
     
     redirect_to meal_path(@meal)
-    else
-      render :new
-    end
   end
 
   def destroy
-    @meal = current_user.meals.find_by_id(params[:id])
+    @meal.foodlogs.destroy
     @meal.destroy
     redirect_to meals_path
   end
@@ -75,7 +68,7 @@ class MealsController < ApplicationController
   end
 
   def find_meals
-    @meal = Meal.find(params[:id])
+    @meal = current_user.meals.find_by_id(params[:id])
   end
 
   def redirect_if_not_owner

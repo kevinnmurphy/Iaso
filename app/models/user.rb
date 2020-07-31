@@ -18,15 +18,13 @@ class User < ApplicationRecord
 
     validates :name, presence: true
     validates :name, uniqueness: true
-    # validates :name, email, height, weight, presence: true
-    # validates_length_of :password, within: 5..72
+    
+    validates_length_of :password, within: 4..72
 
+    # validates :name, email, height, weight, presence: true
     validates :email, presence: true#, email: true
 
-    # validates :height, presence: true
-    # validates :weight, presence: true
-
-    
+  
 
     def self.from_omniauth(auth)
         User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|

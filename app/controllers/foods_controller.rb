@@ -41,16 +41,11 @@ class FoodsController < ApplicationController
   end
 
   def edit
-    if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
-      @food = @meal.foods.build
       @foodlog = @food.foodlogs.build
-    else
       @food = current_user.foods.find_by_id(params[:id])
-    end 
   end
 
   def update
-
     @food = current_user.foods.find(params[:id])
     @food.update(food_params)
     if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
