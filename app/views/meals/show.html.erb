@@ -24,6 +24,8 @@
 
 <br>
 
+<%# render '/foodlogs/form' %>
+
 <%= form_for @meal.foodlogs.build do |f| %>
   <%= f.hidden_field :meal_id%>
   <%= f.label :food_id, "Add Food: " %>

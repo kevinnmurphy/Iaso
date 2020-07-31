@@ -17,6 +17,12 @@
 /* @import "bootstrap-sprockets";
 @import "bootstrap"; */
 
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: inline;
+}
+
 body {
   padding-top: 70px;
   padding-bottom: 30px;
