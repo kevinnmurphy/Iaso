@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   
-  # get '/logout', to: 'sessions#destroy'
   delete '/logout', to: 'sessions#destroy'
 
   # custom route for scoped items
@@ -28,6 +27,6 @@ Rails.application.routes.draw do
   # match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   get '/auth/:provider/callback', to: 'sessions#omniauth'
  
-  # get '*path', to: redirect { '/' }
+  get '*path', to: redirect { '/' }
 
 end

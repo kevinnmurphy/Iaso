@@ -2,11 +2,6 @@
 
  <%= link_to 'Create Meal', new_meal_path(@meal) %>
 
-
-Last Meal:
-
-Today's Meals:
-
 <ul>
   <% @meals.each do |meal| %>
     <li><%= link_to "#{meal.name} (#{meal.pretty_date})", meal_path(meal) %></li>
