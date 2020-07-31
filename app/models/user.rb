@@ -46,5 +46,20 @@ class User < ApplicationRecord
     #       "image"=>
     #        "https://lh4.googleusercontent.com/-2XgXgN4XtXI/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuck8WDi83OG_NDFVo7X9EyL02VgdFA/photo.jpg"}
 
+    def todays_meals
+        meals.today
+    end
+
+    def todays_calories
+        mealcount = 0
+        todays_meals.each {|meal| mealcount += meal.calculate_macros}
+        mealcount
+    end
+
+    def todays_macros(macro = :calories)
+        mealcount = 0
+        todays_meals.each {|meal| mealcount += meal.calculate_macros(macro)}
+        mealcount
+    end
 
 end

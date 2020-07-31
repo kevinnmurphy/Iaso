@@ -46,12 +46,11 @@ class Meal < ApplicationRecord
         where("created_at >= ?", Time.now.beginning_of_day) 
     end
 
-    def food_count
-        food_count = 0
-        self.each do |meal|
-            count = meal.foods.size
-            food_count += count
-        end
+
+    def self.meals_total
+        mealcount = 0
+        self.each {|meal| mealcount += meal.calculate_macros}
+        mealcount
     end
 
     # Today.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)
