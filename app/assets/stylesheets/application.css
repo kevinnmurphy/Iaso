@@ -23,7 +23,9 @@
   display: inline;
 }
 
+
 body {
+  background-color: rgb(233, 233, 233);
   padding-top: 70px;
   padding-bottom: 30px;
 }

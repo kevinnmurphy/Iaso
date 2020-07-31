@@ -19,7 +19,7 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :name, uniqueness: true
     
-    validates_length_of :password, within: 4..72
+    # validates_length_of :password, within: 4..72
 
     # validates :name, email, height, weight, presence: true
     validates :email, presence: true, email: true

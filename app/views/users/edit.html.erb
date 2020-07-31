@@ -6,4 +6,4 @@
 
 <%= render 'form' %>
 <br>
-<%= button_to "Delete User", user_path(current_user), method: :delete %>
+<%= button_to "Delete User", user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' } %>

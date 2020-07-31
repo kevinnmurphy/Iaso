@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-
-<%= button_to "Delete", foodlog_path(@foodlog), method: 'delete' %>
+<%= button_to "Delete", foodlog_path(@foodlog), method: 'delete', data: { confirm: 'Are you sure?' } %>
