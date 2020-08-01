@@ -3,7 +3,7 @@ class FoodsController < ApplicationController
   before_action :require_login
   before_action :find_foods, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_owner, only: [:edit, :update, :destroy]
-  
+
 
   def new
     if params[:meal_id] && @meal = Meal.find_by_id(params[:meal_id])
@@ -15,8 +15,6 @@ class FoodsController < ApplicationController
   end
 
   def create
-    # byebug
-    
     @meal = Meal.find_by_id(params[:meal_id])
     food = current_user.foods.build(food_params)
 
@@ -35,7 +33,12 @@ class FoodsController < ApplicationController
   end
   
   def index
-    @foods = Food.all
+    if params[:name] 
+      @foods = Food.all.search(params[:name])
+    else
+      @foods = Food.all
+    end
+
   end
 
   def show
@@ -43,8 +46,8 @@ class FoodsController < ApplicationController
   end
 
   def edit
-      @foodlog = @food.foodlogs.build
-      @food = current_user.foods.find_by_id(params[:id])
+    @foodlog = @food.foodlogs.build
+    @food = current_user.foods.find_by_id(params[:id])
   end
 
   def update

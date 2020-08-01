@@ -18,7 +18,7 @@ class Food < ApplicationRecord
     validates :carbs, :proteins, :fats, presence: true
     validates :carbs, :proteins, :fats, numericality: { greater_than_or_equal_to: 0}
 
-    accepts_nested_attributes_for :foodlogs
+    # accepts_nested_attributes_for :foodlogs
 
     # scope :order_by_name, ->  order(name:) 
 
@@ -27,7 +27,7 @@ class Food < ApplicationRecord
     scope :order_by_fats, -> { order(fats: asc) }
     scope :order_by_proteins, -> { order(proteins: asc) }
 
-    # extend Search::ClassMethods
+    extend Searchable::ClassMethods
 
     def self.order_by_name
         self.order(:name)

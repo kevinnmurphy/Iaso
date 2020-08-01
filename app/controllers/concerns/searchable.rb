@@ -9,11 +9,7 @@ module Searchable
     module ClassMethods
   
         def search(query)
-            if !!query
                 self.where("name LIKE ?", "%#{query}%")
-            else
-                self.all
-            end
         end
 
         def sort_by_name
