@@ -37,8 +37,8 @@ class MealsController < ApplicationController
   end
 
   def show
-    # @meal = Meal.find_by_id(params[:id])
-    @meal = @foodlog.meal
+    @meal = Meal.find_by_id(params[:id])
+    # @meal = @foodlog.meal
     @foodlog = @meal.foodlogs.find_by_id(params[:id])
     @foods = Food.all.order_by_name
     @food = @meal.foods.build
